@@ -9,7 +9,7 @@
 | [Day 1](https://adventofcode.com/2022/day/1)   | Calorie Counting        | Python           | :star: :star: |
 | [Day 2](https://adventofcode.com/2022/day/2)   | Rock Paper Scissors     | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2022/day/3)   | Rucksack Reorganization | Python           | :star: :star: |
-| [Day 4](https://adventofcode.com/2022/day/4)   | -                       | -                | -             |
+| [Day 4](https://adventofcode.com/2022/day/4)   | Camp Cleanup            | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2022/day/5)   | -                       | -                | -             |
 | [Day 6](https://adventofcode.com/2022/day/6)   | -                       | -                | -             |
 | [Day 7](https://adventofcode.com/2022/day/7)   | -                       | -                | -             |
