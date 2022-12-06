@@ -2,11 +2,12 @@
 
 [Advent of Code 2022](https://adventofcode.com/2022) - Solutions to each day
 
-- Using Python 3.10, [black](https://github.com/psf/black) formatter
+- Using Python 3.10 with [black](https://github.com/psf/black) formatter
+- C++17
 
 | Calendar                                       | Name                    | Language(s) used | Stars         |
-|------------------------------------------------|-------------------------|------------------|---------------|
-| [Day 1](https://adventofcode.com/2022/day/1)   | Calorie Counting        | Python           | :star: :star: |
+| ---------------------------------------------- | ----------------------- | ---------------- | ------------- |
+| [Day 1](https://adventofcode.com/2022/day/1)   | Calorie Counting        | Python, C++      | :star: :star: |
 | [Day 2](https://adventofcode.com/2022/day/2)   | Rock Paper Scissors     | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2022/day/3)   | Rucksack Reorganization | Python           | :star: :star: |
 | [Day 4](https://adventofcode.com/2022/day/4)   | Camp Cleanup            | Python           | :star: :star: |
