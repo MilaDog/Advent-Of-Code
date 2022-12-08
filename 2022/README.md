@@ -4,16 +4,17 @@
 
 - Using Python 3.10 with [black](https://github.com/psf/black) formatter
 - C++17
+- Nim
 
 | Calendar                                       | Name                    | Language(s) used | Stars         |
-| ---------------------------------------------- | ----------------------- | ---------------- | ------------- |
+|------------------------------------------------|-------------------------|------------------|---------------|
 | [Day 1](https://adventofcode.com/2022/day/1)   | Calorie Counting        | Python, C++, Nim | :star: :star: |
 | [Day 2](https://adventofcode.com/2022/day/2)   | Rock Paper Scissors     | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2022/day/3)   | Rucksack Reorganization | Python           | :star: :star: |
 | [Day 4](https://adventofcode.com/2022/day/4)   | Camp Cleanup            | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2022/day/5)   | Supply Stacks           | Python           | :star: :star: |
 | [Day 6](https://adventofcode.com/2022/day/6)   | Tuning Trouble          | Python           | :star: :star: |
-| [Day 7](https://adventofcode.com/2022/day/7)   | -                       | -                | -             |
+| [Day 7](https://adventofcode.com/2022/day/7)   | No Space Left On Device | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2022/day/8)   | -                       | -                | -             |
 | [Day 9](https://adventofcode.com/2022/day/9)   | -                       | -                | -             |
 | [Day 10](https://adventofcode.com/2022/day/10) | -                       | -                | -             |
