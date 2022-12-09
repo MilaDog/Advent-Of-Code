@@ -2,7 +2,7 @@
 
 [Advent of Code 2022](https://adventofcode.com/2022) - Solutions to each day
 
-- Using Python 3.10 with [black](https://github.com/psf/black) formatter
+- Using Python 3.10.5 with [black](https://github.com/psf/black) formatter
 - C++17
 - Nim
 
@@ -15,7 +15,7 @@
 | [Day 5](https://adventofcode.com/2022/day/5)   | Supply Stacks           | Python           | :star: :star: |
 | [Day 6](https://adventofcode.com/2022/day/6)   | Tuning Trouble          | Python           | :star: :star: |
 | [Day 7](https://adventofcode.com/2022/day/7)   | No Space Left On Device | Python           | :star: :star: |
-| [Day 8](https://adventofcode.com/2022/day/8)   | -                       | -                | -             |
+| [Day 8](https://adventofcode.com/2022/day/8)   | Treetop Tree House      | Python           | :star: :star: |
 | [Day 9](https://adventofcode.com/2022/day/9)   | -                       | -                | -             |
 | [Day 10](https://adventofcode.com/2022/day/10) | -                       | -                | -             |
 | [Day 11](https://adventofcode.com/2022/day/11) | -                       | -                | -             |
