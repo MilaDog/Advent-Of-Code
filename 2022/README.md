@@ -17,7 +17,7 @@
 | [Day 7](https://adventofcode.com/2022/day/7)   | No Space Left On Device | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2022/day/8)   | Treetop Tree House      | Python           | :star: :star: |
 | [Day 9](https://adventofcode.com/2022/day/9)   | Rope Bridge             | Python           | :star: :star: |
-| [Day 10](https://adventofcode.com/2022/day/10) | -                       | -                | -             |
+| [Day 10](https://adventofcode.com/2022/day/10) | Cathode-Ray Tube        | Python           | :star: :star: |
 | [Day 11](https://adventofcode.com/2022/day/11) | -                       | -                | -             |
 | [Day 12](https://adventofcode.com/2022/day/12) | -                       | -                | -             |
 | [Day 13](https://adventofcode.com/2022/day/13) | -                       | -                | -             |
