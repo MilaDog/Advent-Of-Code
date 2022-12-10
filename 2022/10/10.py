@@ -14,7 +14,7 @@ def solve() -> None:
             if tlt - 1 <= cnt % 40 <= tlt + 1:
                 view += "#"
             else:
-                view += "."
+                view += " "
 
             if len(view) == 40:
                 display_code.append(view)
