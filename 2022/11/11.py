@@ -13,10 +13,6 @@ class Monkey:
     false_throw_to: int
     inspection_count: int = 0
 
-    @property
-    def get_inspection_count(self):
-        return self.inspection_count
-
     def perform_operation(self, part1: bool = True, lcm: int = 1) -> tuple([int, int]):
         self.inspection_count += 1
 
@@ -77,7 +73,7 @@ def solve(part1: bool = True, amt: int = 20) -> int:
                 monkeys[to_monkey].items.append(val)
 
     total_monkey_inspections: list[int] = sorted(
-        [x.get_inspection_count for x in monkeys], reverse=True
+        [x.inspection_count for x in monkeys], reverse=True
     )
     return total_monkey_inspections[0] * total_monkey_inspections[1]
 
