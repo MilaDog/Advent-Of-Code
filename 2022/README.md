@@ -7,7 +7,7 @@
 - Nim
 
 | Calendar                                       | Name                    | Language(s) used | Stars         |
-|------------------------------------------------|-------------------------|------------------|---------------|
+| ---------------------------------------------- | ----------------------- | ---------------- | ------------- |
 | [Day 1](https://adventofcode.com/2022/day/1)   | Calorie Counting        | Python, C++, Nim | :star: :star: |
 | [Day 2](https://adventofcode.com/2022/day/2)   | Rock Paper Scissors     | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2022/day/3)   | Rucksack Reorganization | Python           | :star: :star: |
@@ -18,7 +18,7 @@
 | [Day 8](https://adventofcode.com/2022/day/8)   | Treetop Tree House      | Python           | :star: :star: |
 | [Day 9](https://adventofcode.com/2022/day/9)   | Rope Bridge             | Python           | :star: :star: |
 | [Day 10](https://adventofcode.com/2022/day/10) | Cathode-Ray Tube        | Python           | :star: :star: |
-| [Day 11](https://adventofcode.com/2022/day/11) | -                       | -                | -             |
+| [Day 11](https://adventofcode.com/2022/day/11) | Monkey in the Middle    | Python           | :star: :star: |
 | [Day 12](https://adventofcode.com/2022/day/12) | -                       | -                | -             |
 | [Day 13](https://adventofcode.com/2022/day/13) | -                       | -                | -             |
 | [Day 14](https://adventofcode.com/2022/day/14) | -                       | -                | -             |
