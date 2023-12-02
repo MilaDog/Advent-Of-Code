@@ -13,7 +13,7 @@
 | [Day 4](https://adventofcode.com/2015/day/4)   | The Ideal Stocking Stuffer             | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2015/day/5)   | Doesn't He Have Intern-Elves For This? | Python           | :star: :star: |
 | [Day 6](https://adventofcode.com/2015/day/6)   | Probably a Fire Hazard                 | Python           | :star: :star: |
-| [Day 7](https://adventofcode.com/2015/day/7)   | -                                      | -                | -             |
+| [Day 7](https://adventofcode.com/2015/day/7)   | Some Assembly Required                 | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2015/day/8)   | -                                      | -                | -             |
 | [Day 9](https://adventofcode.com/2015/day/9)   | -                                      | -                | -             |
 | [Day 10](https://adventofcode.com/2015/day/10) | -                                      | -                | -             |
