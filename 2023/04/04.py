@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 from timeit import timeit
-
+from re import findall
 
 TEST_DATA: str = """Card 1: 41 48 83 86 17 | 83 86  6 31 17  9 48 53
 Card 2: 13 32 20 16 61 | 61 30 68 82 17 32 24 19
@@ -25,15 +25,12 @@ def parse_scratch_cards(lines: list[str]) -> dict:
     res: dict[int, list[set[int]]] = {}
 
     for line in lines:
-        # Edge case: double ' ', so 45 or ' 4'
-        line = line.replace("  ", " ")
-
         card, data = line.strip().split(": ")
         card_number: int = int(card[5:])
         data_nums: list[str] = data.strip().split(" | ")
 
-        winning_nums: set(int) = set(map(int, data_nums[0].strip().split(" ")))
-        scratch_nums: set(int) = set(map(int, data_nums[1].strip().split(" ")))
+        winning_nums: set(int) = set(map(int, findall("(\d+)", data_nums[0])))
+        scratch_nums: set(int) = set(map(int, findall("(\d+)", data_nums[1])))
 
         res[card_number] = [winning_nums, scratch_nums]
 
