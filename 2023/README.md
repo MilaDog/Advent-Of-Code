@@ -9,7 +9,7 @@
 | [Day 1](https://adventofcode.com/2023/day/1)   | Trebuchet?!    | Python           | :star: :star: |
 | [Day 2](https://adventofcode.com/2023/day/2)   | Cube Conundrum | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2023/day/3)   | -              | -                | -             |
-| [Day 4](https://adventofcode.com/2023/day/4)   | -              | -                | -             |
+| [Day 4](https://adventofcode.com/2023/day/4)   | Scratchcards   | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2023/day/5)   | -              | -                | -             |
 | [Day 6](https://adventofcode.com/2023/day/6)   | -              | -                | -             |
 | [Day 7](https://adventofcode.com/2023/day/7)   | -              | -                | -             |
