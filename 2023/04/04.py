@@ -29,8 +29,8 @@ def parse_scratch_cards(lines: list[str]) -> dict:
         card_number: int = int(card[5:])
         data_nums: list[str] = data.strip().split(" | ")
 
-        winning_nums: set(int) = set(map(int, findall("(\d+)", data_nums[0])))
-        scratch_nums: set(int) = set(map(int, findall("(\d+)", data_nums[1])))
+        winning_nums: set(int) = set(map(int, findall(r"(\d+)", data_nums[0])))
+        scratch_nums: set(int) = set(map(int, findall(r"(\d+)", data_nums[1])))
 
         res[card_number] = [winning_nums, scratch_nums]
 
@@ -67,13 +67,13 @@ def part_2(data: dict) -> int:
         if not wins:
             continue
 
-        for j in range(len(wins)):
+        for j in range(1, len(wins) + 1):
             # Eg: Card 1 has 3 winning numbers, so card 2 through 4 gain a copy.
             # Since we have only 1 Card 1 (original), Cards 2-4 get an extra.
             # For Card 2, 2 winning numbers are found, so extra cards for Cards 3-4.
             # Since Card 2 now has 2 (1 original + copy from previous card winning), we add the current number of Card 2
             # to the following numbers. And so on...
-            res[i + j + 1] += res[i]
+            res[i + j] += res[i]
 
     return sum(res.values())
 
