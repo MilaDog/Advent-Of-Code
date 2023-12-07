@@ -23,9 +23,7 @@ class Hands:
         hand_, bid = line.strip().split(" ")
         return Hand(hand_, int(bid))
 
-    def calculate_hand_strength(
-        self, hand: Hand, part_2: bool = False
-    ) -> tuple[int, int]:
+    def calculate_hand_strength(self, hand: Hand, part_2: bool = False) -> tuple[int, str]:
         """
         calculate_hand_strength Determine the strength of the given hand
 
@@ -34,7 +32,7 @@ class Hands:
             part_2 (bool, optional): Whether hand falls into Part 2of the problem. Defaults to False.
 
         Returns:
-            tuple[int, int]: Returns the strength of the hand, as well as the modified hand. Allows for sorting.
+            tuple[int, str]: Returns the strength of the hand, as well as the modified hand. Allows for sorting.
         """
         curr_hand = hand.hand
 
@@ -44,9 +42,7 @@ class Hands:
         curr_hand = curr_hand.replace("K", chr(ord("9") + 4))
         curr_hand = curr_hand.replace("A", chr(ord("9") + 5))
         curr_hand = (
-            curr_hand.replace("J", chr(ord("9") + 2))
-            if not part_2
-            else curr_hand.replace("J", chr(ord("2") - 1))
+            curr_hand.replace("J", chr(ord("9") + 2)) if not part_2 else curr_hand.replace("J", chr(ord("2") - 1))
         )
 
         if hand.order != -1:
@@ -66,10 +62,8 @@ class Hands:
                 return 3, curr_hand
             case [2, 1, 1, 1]:
                 return 2, curr_hand
-            case [1, 1, 1, 1, 1]:
-                return (1, curr_hand)
             case _:
-                assert f"{False}, {hand}, {hand_count}, {curr_hand}"
+                return (1, curr_hand)
 
 
 def part_1(hands: Hands) -> int:
@@ -82,9 +76,7 @@ def part_1(hands: Hands) -> int:
     Returns:
         int: Answer to problem
     """
-    values: list[int] = sorted(
-        hands.hands, key=lambda x: hands.calculate_hand_strength(x, False)
-    )
+    values: list[Hand] = sorted(hands.hands, key=lambda x: hands.calculate_hand_strength(x, False))
     res: list[int] = [(x.bid * (i + 1)) for i, x in enumerate(values)]
     return sum(res)
 
@@ -99,7 +91,7 @@ def part_2(hands: Hands) -> int:
     Returns:
         int: Answer to problem
     """
-    hands_res: list[Hand] = []
+    hands_res = []
     for hand in hands.hands:
         t = []
         for l in "23456789TQKA":
@@ -108,9 +100,7 @@ def part_2(hands: Hands) -> int:
         hands_res.append(max(t))
 
     hands_res = [Hand(y[0], y[1], x[0]) for x, y in hands_res]
-    values: list[int] = sorted(
-        hands_res, key=lambda x: hands.calculate_hand_strength(x, True)
-    )
+    values: list[Hand] = sorted(hands_res, key=lambda x: hands.calculate_hand_strength(x, True))
     res: list[int] = [(x.bid * (i + 1)) for i, x in enumerate(values)]
     return sum(res)
 
