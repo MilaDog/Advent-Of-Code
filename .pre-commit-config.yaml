@@ -1,7 +1,6 @@
+---
 repos:
--   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
-    hooks:
+  - hooks:
       - id: check-yaml
       - id: check-json
       - id: check-toml
@@ -9,13 +8,15 @@ repos:
       - id: pretty-format-json
       - id: end-of-file-fixer
       - id: trailing-whitespace
--   repo: https://github.com/psf/black
-    rev: 22.10.0
-    hooks:
-      - id: black
-        args:
+    repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.3.0
+  - hooks:
+      - args:
           - '--config=pyproject.toml'
--   repo: https://github.com/RobertCraigie/pyright-python
+        id: black
+    repo: https://github.com/psf/black
+    rev: 22.10.0
+  - hooks:
+      - id: pyright
+    repo: https://github.com/RobertCraigie/pyright-python
     rev: v1.1.339
-    hooks:
-    - id: pyright
