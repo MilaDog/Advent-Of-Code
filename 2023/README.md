@@ -12,7 +12,7 @@
 | [Day 4](https://adventofcode.com/2023/day/4)   | Scratchcards                    | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2023/day/5)   | If You Give A Seed A Fertilizer | Python           | :star:        |
 | [Day 6](https://adventofcode.com/2023/day/6)   | Wait For It                     | Python           | :star: :star: |
-| [Day 7](https://adventofcode.com/2023/day/7)   | -                               | -                | -             |
+| [Day 7](https://adventofcode.com/2023/day/7)   | Camel Cards                     | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2023/day/8)   | -                               | -                | -             |
 | [Day 9](https://adventofcode.com/2023/day/9)   | -                               | -                | -             |
 | [Day 10](https://adventofcode.com/2023/day/10) | -                               | -                | -             |
