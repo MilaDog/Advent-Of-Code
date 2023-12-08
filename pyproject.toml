@@ -5,11 +5,12 @@ description = "Solutions to the Advent of Code Questions"
 authors = ["MilaDog <daniel.ryan.sergeant@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{ include = "advent_of_code" }]
+packages = [{ include = "common" }]
 
 [tool.poetry.dependencies]
 python = "^3.10"
 pre-commit = "^3.5.0"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.11.0"
