@@ -14,7 +14,7 @@
 | [Day 6](https://adventofcode.com/2023/day/6)   | Wait For It                     | Python           | :star: :star: |
 | [Day 7](https://adventofcode.com/2023/day/7)   | Camel Cards                     | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2023/day/8)   | Haunted Wasteland               | Python           | :star: :star: |
-| [Day 9](https://adventofcode.com/2023/day/9)   | -                               | -                | -             |
+| [Day 9](https://adventofcode.com/2023/day/9)   | Mirage Maintenance                              | Python           | :star: :star: |
 | [Day 10](https://adventofcode.com/2023/day/10) | -                               | -                | -             |
 | [Day 11](https://adventofcode.com/2023/day/11) | -                               | -                | -             |
 | [Day 12](https://adventofcode.com/2023/day/12) | -                               | -                | -             |

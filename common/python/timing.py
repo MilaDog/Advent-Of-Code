@@ -46,8 +46,6 @@ class Timing:
         self._microseconds = int(us)
         self._nanoseconds = int(ns)
 
-        return self
-
     def __str__(self):
         """Get the string representation of the object"""
         s: str = "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d" % (

@@ -27,6 +27,7 @@ hs_err_pid*
 .venv
 .idea
 .env
+.fleet
 
 *dev.py
 input.txt
