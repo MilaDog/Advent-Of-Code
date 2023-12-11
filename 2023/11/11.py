@@ -1,7 +1,6 @@
 from timeit import timeit
 from common.python.timing import Timing
 from dataclasses import dataclass
-from typing import Optional
 from itertools import combinations
 
 
