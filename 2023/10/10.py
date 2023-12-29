@@ -2,7 +2,6 @@ from collections import deque
 from dataclasses import dataclass
 from enum import Enum
 from timeit import timeit
-from typing import Optional
 
 from common.python.timing import Timing
 
@@ -15,14 +14,25 @@ class Directions(Enum):
 
 
 class Symbols(Enum):
-    PIPE_VERTICAL = ("|", [Directions.NORTH, Directions.SOUTH])
-    PIPE_HORIZONTAL = ("-", [Directions.EAST, Directions.WEST])
-    BEND_NORTH_EAST = ("L", [Directions.EAST, Directions.NORTH])
-    BEND_NORTH_WEST = ("J", [Directions.WEST, Directions.NORTH])
-    BEND_SOUTH_EAST = ("F", [Directions.EAST, Directions.SOUTH])
-    BEND_SOUTH_WEST = ("7", [Directions.WEST, Directions.SOUTH])
-    START = ("S", [Directions.WEST, Directions.SOUTH, Directions.NORTH, Directions.EAST])
-    EMPTY = (".", None)
+    PIPE_VERTICAL = "|"
+    PIPE_HORIZONTAL = "-"
+    BEND_NORTH_EAST = "L"
+    BEND_NORTH_WEST = "J"
+    BEND_SOUTH_EAST = "F"
+    BEND_SOUTH_WEST = "7"
+    START = "S"
+    EMPTY = "."
+
+
+class SymbolEntrances(Enum):
+    PIPE_VERTICAL = [Directions.NORTH, Directions.SOUTH]
+    PIPE_HORIZONTAL = [Directions.EAST, Directions.WEST]
+    BEND_NORTH_EAST = [Directions.EAST, Directions.NORTH]
+    BEND_NORTH_WEST = [Directions.WEST, Directions.NORTH]
+    BEND_SOUTH_EAST = [Directions.EAST, Directions.SOUTH]
+    BEND_SOUTH_WEST = [Directions.WEST, Directions.SOUTH]
+    START = [Directions.WEST, Directions.SOUTH, Directions.NORTH, Directions.EAST]
+    EMPTY = None
 
 
 DIRECTION_PAIRS: dict[Directions, Directions] = {
@@ -33,11 +43,10 @@ DIRECTION_PAIRS: dict[Directions, Directions] = {
 }
 
 
-@dataclass()
+@dataclass(frozen=True)
 class Cell:
-    x: int
-    y: int
     symbol: Symbols
+    entrances: SymbolEntrances
 
 
 class Grid:
@@ -45,7 +54,7 @@ class Grid:
         self.grid: list[list[Cell]] = data
         self.height: int = len(data)
         self.width: int = len(data[0])
-        self.starting_point: Optional[Cell] = self._find_starting_point()
+        self.starting_point: tuple[int, int, Cell] = self._find_starting_point()
         self.loop: list[tuple[int, int]] = self._determine_grid_loop()
 
     @staticmethod
@@ -61,28 +70,11 @@ class Grid:
         """
         grid: list = []
 
-        for x, line in enumerate(data.splitlines()):
+        for line in data.splitlines():
             row: list[Cell] = []
 
-            for y, val in enumerate(list(line.strip())):
-                sym: Symbols = Symbols.EMPTY
-                match val:
-                    case "-":
-                        sym = Symbols.PIPE_HORIZONTAL
-                    case "|":
-                        sym = Symbols.PIPE_VERTICAL
-                    case "S":
-                        sym = Symbols.START
-                    case "7":
-                        sym = Symbols.BEND_SOUTH_WEST
-                    case "F":
-                        sym = Symbols.BEND_SOUTH_EAST
-                    case "J":
-                        sym = Symbols.BEND_NORTH_WEST
-                    case "L":
-                        sym = Symbols.BEND_NORTH_EAST
-
-                row.append(Cell(x, y, sym))
+            for val in list(line.strip()):
+                row.append(Cell(Symbols(val), SymbolEntrances._member_map_.get(Symbols(val).name)))  # type: ignore
 
             grid.append(row)
 
@@ -98,19 +90,19 @@ class Grid:
 
         return cls(cls.parse_data(data))
 
-    def _find_starting_point(self) -> Optional[Cell]:
+    def _find_starting_point(self) -> tuple[int, int, Cell]:
         """
         _find_starting_point Find the starting point of the grid
 
         Returns:
             Cell: Starting point of grid
         """
-        for row in self.grid:
-            for cell in row:
-                if cell.symbol.value[0] == "S":
-                    return cell
+        for x, row in enumerate(self.grid):
+            for y, cell in enumerate(row):
+                if cell.symbol == Symbols.START:
+                    return (x, y, cell)
 
-        assert "Cannot find a starting point"
+        raise Exception("Cannot find a starting point")
 
     def _is_within_grid_bounds(self, x: int, y: int) -> bool:
         """
@@ -128,53 +120,59 @@ class Grid:
     def _determine_grid_loop(self) -> list[tuple[int, int]]:
         """
         _determine_grid_loop Determine the loop of the grid
+
+        Returns:
+            list[tuple[int, int]]: Closed loop in the grid
         """
         queue = deque([self.starting_point])
         visited = set()
         loop = []
 
         while queue:
-            current_cell: Optional[Cell] = queue.popleft()
+            curr = queue.popleft()
 
             # Check if it has been visited
-            if current_cell in visited or current_cell is None:
+            if curr in visited:
                 continue
+            visited.add(curr)
 
-            visited.add(current_cell)
-            loop.append((current_cell.x, current_cell.y))
+            # Unpacking tuple
+            x, y, current_cell = curr
+            loop.append((x, y))
 
-            # Checking that the directions are not none
-            if current_cell.symbol.value[1] is None or len(current_cell.symbol.value[1]) == 0:
-                continue
+            if current_cell.entrances.value is not None:
+                for direction in current_cell.entrances.value:
+                    dx, dy = direction.value[0] + x, direction.value[1] + y
 
-            for direction in current_cell.symbol.value[1]:
-                dx, dy = direction.value
+                    if self._is_within_grid_bounds(dx, dy):
+                        target_cell: Cell = self.grid[dx][dy]
 
-                if self._is_within_grid_bounds(current_cell.x + dx, current_cell.y + dy):
-                    target_cell: Cell = self.grid[current_cell.x + dx][current_cell.y + dy]
+                        if target_cell.symbol == Symbols.EMPTY or (dx, dy, target_cell) in visited:
+                            continue
 
-                    if target_cell.symbol == Symbols.EMPTY or target_cell in visited:
-                        continue
+                        # Checking that you can enter the target_cell from current_cell
+                        if DIRECTION_PAIRS.get(direction) is None or target_cell.entrances.value is None:
+                            continue
 
-                    # Checking that you can enter the target_cell from current_cell
-                    if DIRECTION_PAIRS.get(direction) in target_cell.symbol.value[1]:
-                        if current_cell.symbol.value[0] == "S":  # Choosing initial route
-                            queue.append(target_cell)
-                            break
+                        if DIRECTION_PAIRS.get(direction) in target_cell.entrances.value:
+                            # Choosing initial route
+                            if current_cell.symbol == Symbols.START:
+                                queue.append((dx, dy, target_cell))
+                                break
 
-                        queue.append(target_cell)
+                            queue.append((dx, dy, target_cell))
 
         return loop
 
     def _shoelace_formula(self) -> float:
         """
-        _shoelace_formula Calculate the area of the polygon using Shoelace Theorem
+        _shoelace_formula Calculate the area of the polygon using Shoelace Formula
 
         Returns:
             float: Area of the polygon
         """
         x, y = zip(*self.loop)
-        return 0.5 * abs(sum(x[i] * y[i - 1] - x[i - 1] * y[i] for i in range(len(self.loop))))
+        return abs(sum(x[i] * y[i - 1] - x[i - 1] * y[i] for i in range(len(self.loop)))) // 2
 
     def _picks_theorem(self, area: float) -> int:
         """
@@ -186,12 +184,10 @@ class Grid:
         Returns:
             int: Number of empty cells within polygon
         """
-        return int(area - 0.5 * len(self.loop) + 1)
+        return int(area - len(self.loop) // 2 + 1)
 
     def solve(self):
         """Solving both Parts of the problem"""
-        self._determine_grid_loop()
-
         print("Part 1:", len(self.loop) // 2)
 
         area: float = self._shoelace_formula()
