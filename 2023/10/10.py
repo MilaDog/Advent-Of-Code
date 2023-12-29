@@ -1,9 +1,8 @@
 from collections import deque
 from dataclasses import dataclass
+from enum import Enum
 from timeit import timeit
 from typing import Optional
-from enum import Enum
-from dataclasses import dataclass
 
 from common.python.timing import Timing
 
