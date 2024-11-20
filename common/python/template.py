@@ -1,4 +1,3 @@
-import re
 from timeit import timeit
 from typing import List
 
@@ -19,7 +18,7 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: List[str] = list(file.readlines())
+            values: List[str] = list(file.read().strip())
 
         return cls(data=values)
 
@@ -31,13 +30,6 @@ class Solution:
             None
         """
         tlt: int = 0
-
-        for val in self.data:
-            if re.search(r"([aeiou].*){3,}", val):
-                if re.search(r"(.)\1", val):
-                    if not re.search(r"ab|cd|pq|xy", val):
-                        tlt += 1
-
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
@@ -48,10 +40,6 @@ class Solution:
             None
         """
         tlt: int = 0
-        for val in self.data:
-            if re.search(r"(..).*\1", val):
-                if re.search(r"(.).\1", val):
-                    tlt += 1
 
         print(f"Part 02: {tlt}")
 

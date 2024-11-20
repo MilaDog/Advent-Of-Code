@@ -1,10 +1,9 @@
 # Advent of Code
 # MilaDog
 
-from multiprocessing import Value
-from typing import Union, Optional
-from enum import Enum
 import math as _math
+from enum import Enum
+from typing import Union
 
 
 class TimingSymbols(Enum):
@@ -48,13 +47,19 @@ class Timing:
 
     def __str__(self):
         """Get the string representation of the object"""
-        s: str = "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d" % (
-            self._seconds,
-            self._milliseconds,
-            self._microseconds,
-            self._nanoseconds,
+        s: str = (
+                "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d"
+                % (
+                    self._seconds,
+                    self._milliseconds,
+                    self._microseconds,
+                    self._nanoseconds,
+                )
         )
         return s
+
+    def result(self):
+        return "{:.5f}".format(self._seconds_raw) + "s"
 
     @property
     def seconds(self):

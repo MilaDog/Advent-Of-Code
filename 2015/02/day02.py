@@ -1,25 +1,65 @@
-f = open("input.txt")
-contents = f.read().splitlines()
+from timeit import timeit
+from typing import List
 
-# Part 1
-total_feet = 0
-total_ribbon = 0
+from common.python.timing import Timing
 
-for content in contents:
-    l, w, h = content.split("x")
-    l, w, h = int(l), int(w), int(h)
 
-    lw, wh, hl = l * w, w * h, h * l
-    extra = min([lw, wh, hl])
+class Solution:
+    def __init__(self, data: List[List[int]]) -> None:
+        self.data: List[List[int]] = data
 
-    total_feet += 2 * (lw + wh + hl) + extra
+    @classmethod
+    def parse_input(cls) -> "Solution":
+        """
+        Parse the problem data input to be used.
 
-    # Part 2
-    bow = l * w * h
-    ribbon = min([l + l + w + w, w + w + h + h, h + h + l + l])
+        Returns:
+            Solution:
+                Class instance with the parsed input data.
+        """
+        values: List[List[int]] = []
+        with open("input.txt", "r") as file:
+            for line in file.readlines():
+                dims: List[int] = list(map(int, line.strip().split("x")))
+                values.append(dims)
 
-    total_ribbon += (bow + ribbon)
-f.close()
+        return cls(data=values)
 
-print("Total wrapping:", total_feet)
-print("Total ribbon:", total_ribbon)
+    def part_01(self) -> None:
+        """
+        Solve Part 01 of the problem.
+
+        Returns:
+            None
+        """
+        tlt: int = 0
+        for l, w, h in self.data:
+            # Formula: 2*l*w + 2*w*h + 2*h*l
+            min_value: int = min(l * w, w * h, h * l)
+            tlt += (2 * l * w) + (2 * w * h) + (2 * h * l) + min_value
+
+        print(f"Part 01: {tlt}")
+
+    def part_02(self) -> None:
+        """
+        Solve Part 02 of the problem.
+
+        Returns:
+            None
+        """
+        tlt: int = 0
+
+        m1: int
+        m2: int
+        for l, w, h in self.data:
+            m1, m2 = sorted([l, w, h])[:2]
+            tlt += (l * w * h) + (2 * m1) + (2 * m2)
+
+        print(f"Part 02: {tlt}")
+
+
+if __name__ == "__main__":
+    sol: Solution = Solution.parse_input()
+
+    print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
+    print(Timing(timeit(sol.part_02, number=1)).result(), "\n")

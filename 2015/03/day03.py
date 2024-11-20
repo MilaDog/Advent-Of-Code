@@ -1,68 +1,107 @@
-with open("input.txt") as f:
-    ps = list(f.readline())
+from collections import Counter
+from timeit import timeit
+from typing import List, Counter as Counter_, Tuple
 
-# Part 1
-movements = {'^': 1, '>': 1, 'v': -1, '<': -1}
-
-
-def get_coord(pos, dir):
-    x, y = pos[0], pos[1]
-    match dir:
-        case '^':
-            y += 1
-        case 'v':
-            y -= 1
-        case '>':
-            x += 1
-        case '<':
-            x -= 1
-    return (x, y)
+from common.python.timing import Timing
 
 
-def part1():
-    strt = (0, 0)
-    coords = {strt: 1}
+class Solution:
+    def __init__(self, data: List[str]) -> None:
+        self.data: List[str] = data
 
-    for dir in ps:
-        coord = get_coord(strt, dir)
-        strt = coord
+    @classmethod
+    def parse_input(cls) -> "Solution":
+        """
+        Parse the problem data input to be used.
 
-        if coord in coords.keys():
-            coords[coord] += 1
-        else:
-            coords[coord] = 1
+        Returns:
+            Solution:
+                Class instance with the parsed input data.
+        """
+        with open("input.txt", "r") as file:
+            values: List[str] = list(file.read().strip())
 
-    return sum([1 for x in coords.values() if x > 0])
+        return cls(data=values)
 
+    def __update_position(self, position: Tuple[int, int], direction: str) -> Tuple[int, int]:
+        """
+        Update the person's current position according to the given direction.
 
-# Part 2
-def part2():
-    strt = (0, 0)
-    strt2 = (0, 0)
-    coords = {strt: 1}
+        Args:
+            position (Tuple[int, int]):
+                Current person's position.
+            direction (str):
+                Direction to update the position in.
 
-    for i, dir in enumerate(ps):
+        Returns:
+            Tuple[int, int]:
+                The updated position.
 
-        if i % 2 != 0:
-            coord = get_coord(strt, dir)
-            strt = coord
+        """
+        x: int
+        y: int
+        x, y = position
 
-            if coord in coords.keys():
-                coords[coord] += 1
+        match direction:
+            case "^":
+                return x, y + 1
+
+            case ">":
+                return x + 1, y
+
+            case "v":
+                return x, y - 1
+
+            case "<":
+                return x - 1, y
+
+        raise Exception("Invalid direction given.")
+
+    def part_01(self) -> None:
+        """
+        Solve Part 01 of the problem.
+
+        Returns:
+            None
+        """
+        pos: Tuple[int, int] = (0, 0)
+        cnter: Counter_[Tuple[int, int]] = Counter([pos])
+
+        # ^>v<
+        for dir in self.data:
+            pos = self.__update_position(position=pos, direction=dir)
+            cnter.update([pos])
+
+        tlt: int = len(cnter.values())
+        print(f"Part 01: {tlt}")
+
+    def part_02(self) -> None:
+        """
+        Solve Part 02 of the problem.
+
+        Returns:
+            None
+        """
+        santa: Tuple[int, int] = (0, 0)
+        robo: Tuple[int, int] = (0, 0)
+        cnter: Counter_[Tuple[int, int]] = Counter([santa])
+
+        # ^>v<
+        for i, dir in enumerate(self.data):
+            pos: Tuple[int, int] = self.__update_position(position=santa if i % 2 == 0 else robo, direction=dir)
+            cnter.update([pos])
+
+            if i % 2 == 0:
+                santa = pos
             else:
-                coords[coord] = 1
+                robo = pos
 
-        else:
-            coord = get_coord(strt2, dir)
-            strt2 = coord
-
-            if coord in coords.keys():
-                coords[coord] += 1
-            else:
-                coords[coord] = 1
-
-    return sum([1 for x in coords.values() if x > 0])
+        tlt: int = len(cnter.values())
+        print(f"Part 02: {tlt}")
 
 
-print("Part 1: ", part1())
-print("Part 2: ", part2())
+if __name__ == "__main__":
+    sol: Solution = Solution.parse_input()
+
+    print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
+    print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
