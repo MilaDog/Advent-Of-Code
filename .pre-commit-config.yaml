@@ -28,8 +28,3 @@ repos:
         name: isort (python)
     repo: https://github.com/pycqa/isort
     rev: 5.13.2
-  - repo: https://github.com/pycqa/isort
-    rev: 5.13.2
-    hooks:
-      - id: isort
-        name: isort (python)
