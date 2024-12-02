@@ -12,12 +12,28 @@ python = "^3.10"
 pre-commit = "^3.5.0"
 python-dotenv = "^1.0.0"
 ruff = "^0.7.4"
-isort = "^5.13.2"
 pyright = "^1.1.389"
+regex = "^2024.11.6"
+numpy = "^2.1.3"
+pandas = "^2.2.3"
 
 [tool.poetry.group.dev.dependencies]
-pyright = "^1.1.339"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pyright]
+defineConstant = { DEBUG = true }
+reportMissingImports = "error"
+reportMissingTypeStubs = true
+strictListInference = true
+strictDictionaryInference = true
+strictSetInference = true
+analyzeUnannotatedFunctions = true
+strictParameterNoneValue = true
+enableTypeIgnoreComments = true
+deprecateTypingAliases = true
+enableReachabilityAnalysis = true
+enableExperimentalFeatures = false
+disableBytesTypePromotions = true

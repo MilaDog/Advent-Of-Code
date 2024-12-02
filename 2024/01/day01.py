@@ -1,16 +1,15 @@
+from __future__ import annotations
+
 import re
 from collections import Counter
 from timeit import timeit
-from typing import Counter as Counter_
-from typing import List
-from typing import Tuple
 
 from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: Tuple[List[int], List[int]]) -> None:
-        self.data: Tuple[List[int], List[int]] = data
+    def __init__(self, data: tuple[list[int], list[int]]) -> None:
+        self.data: tuple[list[int], list[int]] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -22,16 +21,13 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values_left: List[int] = []
-            values_right: List[int] = []
+            values_left: list[int] = []
+            values_right: list[int] = []
 
             for line in file.readlines():
-                left: int
-                right: int
-
-                left, right = re.findall(r"\d+", line)
-                values_left.append(int(left))
-                values_right.append(int(right))
+                vals: list[str] = re.findall(r"\d+", line)
+                values_left.append(int(vals[0]))
+                values_right.append(int(vals[1]))
 
         return cls(data=(sorted(values_left), sorted(values_right)))
 
@@ -58,7 +54,7 @@ class Solution:
         """
         tlt: int = 0
 
-        count: Counter_[int] = Counter(self.data[1])
+        count: Counter[int] = Counter(self.data[1])
         for val in self.data[0]:
             tlt += val * count.get(val, 0)
 

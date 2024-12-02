@@ -1,12 +1,11 @@
 from timeit import timeit
-from typing import List
 
 from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: List[str]) -> None:
-        self.data: List[str] = data
+    def __init__(self, data: list[str]) -> None:
+        self.data: list[str] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -18,7 +17,7 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: List[str] = list(file.read().strip())
+            values: list[str] = list(file.read().strip())
 
         return cls(data=values)
 
