@@ -9,7 +9,7 @@
 | [Day 1](https://adventofcode.com/2024/day/1)   | Historian Hysteria | Python           | :star: :star: |
 | [Day 2](https://adventofcode.com/2024/day/2)   | Red-Nosed Reports  | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2024/day/3)   | Mull It Over       | Python           | :star: :star: |
-| [Day 4](https://adventofcode.com/2024/day/4)   | -                  | -                | -             |
+| [Day 4](https://adventofcode.com/2024/day/4)   | Ceres Search       | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2024/day/5)   | -                  | -                | -             |
 | [Day 6](https://adventofcode.com/2024/day/6)   | -                  | -                | -             |
 | [Day 7](https://adventofcode.com/2024/day/7)   | -                  | -                | -             |
