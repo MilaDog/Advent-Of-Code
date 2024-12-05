@@ -11,7 +11,7 @@
 | [Day 3](https://adventofcode.com/2016/day/3)   | Squares With Three Sides        | Python           | :star: :star: |
 | [Day 4](https://adventofcode.com/2016/day/4)   | Security Through Obscurity      | Python           | :star: :star: |
 | [Day 5](https://adventofcode.com/2016/day/5)   | How About a Nice Game of Chess? | Python           | :star: :star: |
-| [Day 6](https://adventofcode.com/2016/day/6)   | -                               | -                | -             |
+| [Day 6](https://adventofcode.com/2016/day/6)   | Signals and Noise               | Python           | :star: :star: |
 | [Day 7](https://adventofcode.com/2016/day/7)   | -                               | -                | -             |
 | [Day 8](https://adventofcode.com/2016/day/8)   | -                               | -                | -             |
 | [Day 9](https://adventofcode.com/2016/day/9)   | -                               | -                | -             |
