@@ -1,4 +1,5 @@
 from collections import defaultdict
+from copy import deepcopy
 from timeit import timeit
 
 from common.python.timing import Timing
@@ -18,8 +19,8 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-        rules: dict[int, list[int]] = defaultdict()
-        updates: list[list[int]] = []
+        rules: dict[int, list[int]] = defaultdict(list)
+        updates: list[list[int]]
 
         with open("input.txt", "r") as file:
             parts: list[str] = file.read().strip().split("\n\n")
@@ -27,16 +28,13 @@ class Solution:
             # Getting the rules
             for rule in parts[0].split("\n"):
                 before, after = rule.strip().split("|")
-
-                if not rules.get(int(before)):
-                    rules[int(before)] = [int(after)]
-                    continue
-
                 rules[int(before)].append(int(after))
 
             # Getting the updates
-            for update in parts[1].split("\n"):
-                updates.append([*map(int, update.strip().split(","))])
+            updates = [
+                [*map(int, update.strip().split(","))]
+                for update in parts[1].split("\n")
+            ]
 
         return cls(data=(rules, updates))
 
@@ -100,12 +98,11 @@ class Solution:
         tlt: int = 0
 
         # Go through updates.
-        for update in self.updates:
+        for update in deepcopy(self.updates):
             # Ensure that it is valid
             if self.is_valid_update(update):
                 # Get the middle value and add to total
-                middle: int = len(update) // 2
-                tlt += update[middle]
+                tlt += update[len(update) // 2]
 
         print(f"Part 01: {tlt}")
 
@@ -119,15 +116,40 @@ class Solution:
         tlt: int = 0
 
         # Go through updates.
-        for update in self.updates:
+        for update in deepcopy(self.updates):
             # Ensure that it is valid
             if not self.is_valid_update(update):
                 # Get the middle value and add to total
                 self.fix_error_update(update)
-                middle: int = len(update) // 2
-                tlt += update[middle]
+                tlt += update[len(update) // 2]
 
         print(f"Part 02: {tlt}")
+
+    def solve_both(self) -> None:
+        """
+        Solve both problems.
+
+        Returns:
+            None
+        """
+        tlt1: int = 0
+        tlt2: int = 0
+
+        # Go through updates.
+        for update in deepcopy(self.updates):
+            # Ensure that it is valid
+            if self.is_valid_update(update):
+                # Get the middle value and add to total
+                tlt1 += update[len(update) // 2]
+
+            else:
+                # Fix
+                self.fix_error_update(update)
+                # Get the middle value and add to total
+                tlt2 += update[len(update) // 2]
+
+        print(f"Part 01: {tlt1}")
+        print(f"Part 02: {tlt2}")
 
 
 if __name__ == "__main__":
@@ -135,3 +157,4 @@ if __name__ == "__main__":
 
     print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
     print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
+    print(Timing(timeit(sol.solve_both, number=1)).result(), "\n")
