@@ -1,3 +1,4 @@
+import re
 from collections import defaultdict
 from copy import deepcopy
 from timeit import timeit
@@ -34,6 +35,22 @@ class Solution:
             updates = [
                 [*map(int, update.strip().split(","))]
                 for update in parts[1].split("\n")
+            ]
+
+        return cls(data=(rules, updates))
+
+    @classmethod
+    def parse_with_regex(cls) -> "Solution":
+        """Because I can"""
+        with open("input.txt", "r") as file:
+            f = file.read()
+            rules = defaultdict(list)
+            for a, b in re.findall(r"(\d+)\|(\d+)", f):
+                rules[int(a)].append(int(b))
+
+            updates = [
+                list(map(int, line.split(",")))
+                for line in re.findall(r"((?:\d+,)+\d+)", f)
             ]
 
         return cls(data=(rules, updates))
@@ -153,7 +170,7 @@ class Solution:
 
 
 if __name__ == "__main__":
-    sol: Solution = Solution.parse_input()
+    sol: Solution = Solution.parse_with_regex()
 
     print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
     print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
