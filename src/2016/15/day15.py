@@ -49,9 +49,12 @@ class Solution:
 
         return cls(data=values)
 
-    def crm(self, time: int, position: int, total_positions: int) -> bool:
+    def crt(self, time: int, position: int, total_positions: int) -> bool:
         """
         Using Chinese Remainder Theorem to solve when the best time to drop the capsule is.
+        Valid if result is equal to 0, indicating level 0.
+
+        So, a MOD m => X, where a -> (time + position), m -> number of positions, X -> target level 0.
 
         Args:
             time (int):
@@ -69,7 +72,7 @@ class Solution:
 
     def solve(self, part02: bool = False) -> int:
         """
-        Solve the given part.
+        Solve the given part. Find time when all disk will be on level 0.
 
         Args:
             part02 (bool):
@@ -83,8 +86,12 @@ class Solution:
         tlt: int = 0
 
         while True:
+            # Adding offset `i` since you only pass one disk at a time.
+            # So, when you reach the first disk, all disks moved 1 tick.
+            # Then the second disk, every other disk besides the first disk moves 1 tick
+            # and so on.
             disks_moved: list[bool] = [
-                self.crm(
+                self.crt(
                     time=tlt + i,
                     position=disk.current_position,
                     total_positions=disk.positions,
@@ -92,8 +99,10 @@ class Solution:
                 for i, disk in enumerate(disks, 1)
             ]
 
+            # With the given time, find if all disks will be on level 0 to allow the capsule to pass through.
             if all(disks_moved):
                 return tlt
+
             tlt += 1
 
     def part_01(self) -> None:
