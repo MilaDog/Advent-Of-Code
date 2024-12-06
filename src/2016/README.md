@@ -19,7 +19,7 @@
 | [Day 10](https://adventofcode.com/2016/day/11) | Radioisotope Thermoelectric Generators | -                | -             |
 | [Day 12](https://adventofcode.com/2016/day/12) | Leonardo's Monorail                    | Python           | :star: :star: |
 | [Day 13](https://adventofcode.com/2016/day/13) | A Maze of Twisty Little Cubicles       | Python           | :star: :star: |
-| [Day 14](https://adventofcode.com/2016/day/14) | -                                      | -                | -             |
+| [Day 14](https://adventofcode.com/2016/day/14) | One-Time Pad                           | Python           | :star: :star: |
 | [Day 15](https://adventofcode.com/2016/day/15) | -                                      | -                | -             |
 | [Day 16](https://adventofcode.com/2016/day/16) | -                                      | -                | -             |
 | [Day 17](https://adventofcode.com/2016/day/17) | -                                      | -                | -             |
