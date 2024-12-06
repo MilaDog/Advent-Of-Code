@@ -3,7 +3,6 @@
 
 import math as _math
 from enum import Enum
-from typing import Union
 
 
 class TimingSymbols(Enum):
@@ -28,7 +27,7 @@ class TimingSymbols(Enum):
 
 
 class Timing:
-    def __init__(self, seconds: Union[int, float] = 0):
+    def __init__(self, seconds: int | float = 0):
         # Converting seconds into desired outputs
         seconds_frac, s = _math.modf(seconds)
         self._seconds_raw = seconds
