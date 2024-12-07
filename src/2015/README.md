@@ -6,7 +6,7 @@
 - Using Python 3.10, [black](https://github.com/psf/black) formatter
 
 | Calendar                                       | Name                                   | Language(s) used | Stars         |
-| ---------------------------------------------- | -------------------------------------- | ---------------- | ------------- |
+|------------------------------------------------|----------------------------------------|------------------|---------------|
 | [Day 1](https://adventofcode.com/2015/day/1)   | Not Quite Lisp                         | Python           | :star: :star: |
 | [Day 2](https://adventofcode.com/2015/day/2)   | I Was Told There Would Be No Math      | Python           | :star: :star: |
 | [Day 3](https://adventofcode.com/2015/day/3)   | Perfectly Spherical Houses in a Vacuum | Python           | :star: :star: |
@@ -29,7 +29,7 @@
 | [Day 20](https://adventofcode.com/2015/day/20) | -                                      | -                | -             |
 | [Day 21](https://adventofcode.com/2015/day/21) | -                                      | -                | -             |
 | [Day 21](https://adventofcode.com/2015/day/22) | -                                      | -                | -             |
-| [Day 23](https://adventofcode.com/2015/day/23) | -                                      | -                | -             |
+| [Day 23](https://adventofcode.com/2015/day/23) | Opening the Turing Lock                | Python           | :star: :star: |
 | [Day 24](https://adventofcode.com/2015/day/24) | -                                      | -                | -             |
 | [Day 25](https://adventofcode.com/2015/day/25) | -                                      | -                | -             |
 
