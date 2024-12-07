@@ -1,8 +1,8 @@
 import hashlib
 from collections import deque
+from collections.abc import Callable
 from itertools import compress
 from timeit import timeit
-from typing import Any
 
 from common.python.timing import Timing
 
@@ -10,7 +10,7 @@ from common.python.timing import Timing
 class Solution:
     def __init__(self, data: str) -> None:
         self.data: str = data
-        self.moves: Any = {
+        self.moves: dict[str, Callable[[int, int], tuple[int, int]]] = {
             "U": lambda x, y: (x, y - 1),
             "D": lambda x, y: (x, y + 1),
             "L": lambda x, y: (x - 1, y),
