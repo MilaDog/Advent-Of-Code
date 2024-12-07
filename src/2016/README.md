@@ -23,7 +23,7 @@
 | [Day 15](https://adventofcode.com/2016/day/15) | Timing is Everything                   | Python           | :star: :star: |
 | [Day 16](https://adventofcode.com/2016/day/16) | Dragon Checksum                        | Python           | :star: :star: |
 | [Day 17](https://adventofcode.com/2016/day/17) | Two Steps Forward                      | Python           | :star: :star: |
-| [Day 18](https://adventofcode.com/2016/day/18) | -                                      | -                | -             |
+| [Day 18](https://adventofcode.com/2016/day/18) | Like a Rogue                           | Python           | :star: :star: |
 | [Day 19](https://adventofcode.com/2016/day/19) | -                                      | -                | -             |
 | [Day 20](https://adventofcode.com/2016/day/20) | -                                      | -                | -             |
 | [Day 21](https://adventofcode.com/2016/day/21) | -                                      | -                | -             |
