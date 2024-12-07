@@ -2,7 +2,9 @@
 
 [Advent of Code 2024](https://adventofcode.com/2024) - Solutions to each day
 
-- Using Python 3.12
+- **Using**:
+    - Python 3.12
+    - pypy3
 
 | Calendar                                       | Name               | Language(s) used | Stars         |
 |------------------------------------------------|--------------------|------------------|---------------|

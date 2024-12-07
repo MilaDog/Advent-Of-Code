@@ -3,7 +3,7 @@ from collections import defaultdict
 from copy import deepcopy
 from timeit import timeit
 
-from common.python.timing import Timing
+from src.common.python.timing import Timing
 
 
 class Solution:

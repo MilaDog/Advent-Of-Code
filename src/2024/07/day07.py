@@ -1,3 +1,4 @@
+from math import floor, log10
 from timeit import timeit
 
 from src.common.python.timing import Timing
@@ -23,6 +24,24 @@ class Solution:
             ]
 
         return cls(data=values)
+
+    def concat_digits(self, x: int, y: int) -> int:
+        """
+        Joins to integers together. Just another method as opposed to string concatenation.
+        Eg: (x,y) => (23, 34) -> 2334
+
+        Args:
+            x (int):
+                First integer.
+            y (int):
+                Second integer.
+
+        Returns:
+            int:
+                Two integers joined together.
+        """
+        cnt: int = floor(log10(y)) + 1
+        return x * 10**cnt + y
 
     def calculate_total(self, part02: bool = False) -> int:
         """
@@ -52,7 +71,7 @@ class Solution:
                     if (r := current * p) <= result:
                         tmp.append(r)
 
-                    if (r := int(str(p) + str(current))) <= result and part02:
+                    if (r := self.concat_digits(p, current)) <= result and part02:
                         tmp.append(r)
 
                 possible_results = tmp
