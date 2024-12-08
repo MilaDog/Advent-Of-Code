@@ -1,11 +1,12 @@
+import math
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: list[str]) -> None:
-        self.data: list[str] = data
+    def __init__(self, data: int) -> None:
+        self.data: int = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -17,7 +18,7 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[str] = list(file.read().strip())
+            values: int = int(file.read().strip())
 
         return cls(data=values)
 
@@ -28,7 +29,7 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
+        tlt: int = math.floor(math.sqrt(self.data)) - (self.data % 2 == 0)
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:

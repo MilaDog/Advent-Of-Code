@@ -1,11 +1,12 @@
+from copy import deepcopy
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: list[str]) -> None:
-        self.data: list[str] = data
+    def __init__(self, data: list[int]) -> None:
+        self.data: list[int] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -17,9 +18,29 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[str] = list(file.read().strip())
+            values: list[int] = [int(line.strip()) for line in file.readlines()]
 
         return cls(data=values)
+
+    def solve(self, data: list[int], part02: bool = False) -> int:
+        tlt: int = 0
+        pos: int = 0
+
+        while True:
+            if not 0 <= pos < len(data):
+                break
+
+            val: int = data[pos]
+
+            if part02:
+                data[pos] += -1 if val >= 3 else 1
+            else:
+                data[pos] += 1
+
+            pos += val
+            tlt += 1
+
+        return tlt
 
     def part_01(self) -> None:
         """
@@ -28,7 +49,7 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
+        tlt: int = self.solve(data=deepcopy(self.data))
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
@@ -38,8 +59,7 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
-
+        tlt: int = self.solve(data=deepcopy(self.data), part02=True)
         print(f"Part 02: {tlt}")
 
 

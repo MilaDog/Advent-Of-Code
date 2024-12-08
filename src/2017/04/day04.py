@@ -1,11 +1,11 @@
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: list[str]) -> None:
-        self.data: list[str] = data
+    def __init__(self, data: list[list[str]]) -> None:
+        self.passphrases: list[list[str]] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -17,7 +17,9 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[str] = list(file.read().strip())
+            values: list[list[str]] = [
+                line.strip().split(" ") for line in file.readlines()
+            ]
 
         return cls(data=values)
 
@@ -28,7 +30,9 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
+        tlt: int = sum(
+            len(set(passphrase)) == len(passphrase) for passphrase in self.passphrases
+        )
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
@@ -39,6 +43,12 @@ class Solution:
             None
         """
         tlt: int = 0
+
+        for passphrase in self.passphrases:
+            sorted_passphrase: list[str] = [
+                "".join(sorted(value)) for value in passphrase
+            ]
+            tlt += len(set(sorted_passphrase)) == len(sorted_passphrase)
 
         print(f"Part 02: {tlt}")
 

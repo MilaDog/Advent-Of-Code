@@ -1,11 +1,11 @@
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from common.python.timing import Timing
 
 
 class Solution:
-    def __init__(self, data: list[str]) -> None:
-        self.data: list[str] = data
+    def __init__(self, data: list[int]) -> None:
+        self.data: list[int] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -17,7 +17,7 @@ class Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[str] = list(file.read().strip())
+            values: list[int] = [int(line.strip()) for line in file.readlines()]
 
         return cls(data=values)
 
@@ -28,7 +28,7 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
+        tlt: int = sum(self.data)
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
@@ -38,9 +38,16 @@ class Solution:
         Returns:
             None
         """
-        tlt: int = 0
+        seen: set[int] = set()
 
-        print(f"Part 02: {tlt}")
+        index: int = 0
+        frequency: int = 0
+        while frequency not in seen:
+            seen.add(frequency)
+            frequency += self.data[index]
+            index = (index + 1) % len(self.data)
+
+        print(f"Part 02: {frequency}")
 
 
 if __name__ == "__main__":

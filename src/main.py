@@ -55,7 +55,7 @@ def main() -> None:
         P: Path = Path(path)
 
         if not P.exists():
-            P.mkdir()
+            P.mkdir(parents=True)
             print(f"Created directory: {path}")
 
         else:
