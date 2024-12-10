@@ -24,31 +24,35 @@ class Solution:
 
             for x, row in enumerate(file.readlines()):
                 for y, col in enumerate(row.strip()):
-                    values[x + 1j * y] = int(col)
+                    pos: complex = x + 1j * y
+                    values[pos] = int(col)
 
                     if col == "0":
-                        zeroes.add(x + 1j * y)
+                        zeroes.add(pos)
 
         return cls(grid=values, zeroes=zeroes)
 
-    def part_01(self) -> None:
+    def solve(self) -> None:
         """
-        Solve Part 01 of the problem.
+        Solves both parts of the problem.
 
         Returns:
             None
         """
-        tlt: int = 0
+        p1: int = 0
+        p2: int = 0
 
         # Simple DFS
         for starting_point in self.zeroes:
             q: deque[complex] = deque([starting_point])
             targets_met: set[complex] = set()
+            unique_paths: int = 0
 
             while q:
                 curr = q.popleft()
 
                 if self.grid[curr] == 9:
+                    unique_paths += 1
                     targets_met.add(curr)
                     continue
 
@@ -57,43 +61,14 @@ class Solution:
                         if n == self.grid[curr] + 1:
                             q.appendleft(curr + change)
 
-            tlt += len(targets_met)
+            p1 += len(targets_met)
+            p2 += unique_paths
 
-        print(f"Part 01: {tlt}")
-
-    def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
-
-        Returns:
-            None
-        """
-        tlt: int = 0
-
-        # Simple DFS
-        for starting_point in self.zeroes:
-            q: deque[complex] = deque([starting_point])
-            targets_met: int = 0
-
-            while q:
-                curr = q.popleft()
-
-                if self.grid[curr] == 9:
-                    targets_met += 1
-                    continue
-
-                for change in (1, -1, -1j, 1j):
-                    if n := self.grid.get(curr + change):
-                        if n == self.grid[curr] + 1:
-                            q.appendleft(curr + change)
-
-            tlt += targets_met
-
-        print(f"Part 02: {tlt}")
+        print(f"Part 01: {p1}")
+        print(f"Part 02: {p2}")
 
 
 if __name__ == "__main__":
     sol: Solution = Solution.parse_input()
 
-    print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
-    print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
+    print(Timing(timeit(sol.solve, number=1)).result(), "\n")
