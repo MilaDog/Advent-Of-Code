@@ -57,9 +57,8 @@ class Solution:
                     continue
 
                 for change in (1, -1, -1j, 1j):
-                    if n := self.grid.get(curr + change):
-                        if n == self.grid[curr] + 1:
-                            q.appendleft(curr + change)
+                    if self.grid.get(curr + change, -1) == self.grid[curr] + 1:
+                        q.appendleft(curr + change)
 
             p1 += len(targets_met)
             p2 += unique_paths
