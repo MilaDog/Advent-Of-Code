@@ -35,3 +35,4 @@ input.csv
 test.txt
 *.exe
 __pycache__
+out

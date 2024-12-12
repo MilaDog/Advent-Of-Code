@@ -23,7 +23,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.ruff]
-line-length = 88
+line-length = 120
 
 [tool.ruff.lint]
 select = ["D", "I", "F", "E", "W", "Q"]    # pydocstyle, isort, pyflakes, pycodestyle (error, warning)
@@ -32,14 +32,15 @@ ignore = [
     "D100",
     "D105",
     "D107",
-    "D205"
+    "D205",
 ]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.lint.pycodestyle]
-max-doc-length = 88
+[tool.ruff.format]
+docstring-code-line-length = "dynamic"
+docstring-code-format = true
 
 [tool.pyright]
 include = ["src"]

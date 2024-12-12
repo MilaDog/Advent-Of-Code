@@ -17,9 +17,9 @@
 | [Day 7](https://adventofcode.com/2024/day/7)   | Bridge Repair      | Python           | :star: :star: |
 | [Day 8](https://adventofcode.com/2024/day/8)   | -                  | -                | -             |
 | [Day 9](https://adventofcode.com/2024/day/9)   | -                  | -                | -             |
-| [Day 11](https://adventofcode.com/2024/day/10) | Hoof It            | Python           | :star: :star: |
-| [Day 10](https://adventofcode.com/2024/day/11) | -                  | -                | -             |
-| [Day 12](https://adventofcode.com/2024/day/12) | -                  | -                | -             |
+| [Day 10](https://adventofcode.com/2024/day/10) | Hoof It            | Python           | :star: :star: |
+| [Day 11](https://adventofcode.com/2024/day/11) | Plutonian Pebbles  | Python           | :star: :star: |
+| [Day 12](https://adventofcode.com/2024/day/12) | Garden Groups      | Python           | :star: :star: |
 | [Day 13](https://adventofcode.com/2024/day/13) | -                  |
 | [Day 14](https://adventofcode.com/2024/day/14) | -                  | -                | -             |
 | [Day 15](https://adventofcode.com/2024/day/15) | -                  | -                | -             |
