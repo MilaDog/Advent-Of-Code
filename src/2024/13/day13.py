@@ -43,7 +43,7 @@ class Solution:
         """Determine whether the Claw Machine can be solved.
 
         Math:
-            With ButtonA -> a, ButtonB -> a, Target -> t, x/y changes being ax/ay for (a, b, t) respectively,
+            With ButtonA -> a, ButtonB -> b, Target -> t, x/y changes being ax/ay for (a, b, t) respectively,
             and unknown amount pushes A and B,
 
             Aax + Bbx = tx
@@ -53,10 +53,10 @@ class Solution:
             (tx - Bbx)/ax = (ty - Bby) / ay
 
             Solving B:
-            aytx - Baybx = axty - Baxby
-            Baxby - Baybx = axty - aytx
-            B(axby - aybx) = axty - aytx
-            B = (axty - aytx) / (axby - aybx)
+            ay*tx - B*ay*bx = ax*ty - B*ax*by
+            B*ax*by - B*ay*bx = ax*ty - ay*tx
+            B(ax*by - ay*bx) = ax*ty - ay*tx
+            B = (ax*ty - ay*tx) / (ax*by - ay*bx)
 
             Thus, solve B, then A.
             If results are integer values, no decimals, then can win.
