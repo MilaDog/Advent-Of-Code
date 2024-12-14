@@ -133,7 +133,7 @@ class Solution:
         tlt: int = 0
 
         # Update Robot positions.
-        for i in range(5000, 10_000):
+        for i in range(10_000):
             updated_robot_positions: dict[tuple[int, int], int] = defaultdict(int)
             for robot in self.robots:
                 new_position: tuple[int, int] = robot.calculate_position_change(repeat=i, grid_bounds=self.grid_bounds)
