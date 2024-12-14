@@ -75,7 +75,8 @@ class Solution:
                 Robots to display.
 
         Returns:
-            None
+            bool:
+                If a tree was displayed or not.
         """
         grid: list[list[str]] = [["-" for _ in range(self.grid_bounds[0])] for _ in range(self.grid_bounds[1])]
 
@@ -126,7 +127,6 @@ class Solution:
                     grid_sections[4] += updated_robot_positions.get((x, y), 0)
 
         tlt: int = reduce(mul, grid_sections.values())
-
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
