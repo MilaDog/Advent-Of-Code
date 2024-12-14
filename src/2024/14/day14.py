@@ -67,7 +67,7 @@ class Solution:
 
         return cls(data=values)
 
-    def display_robots(self, robots: list[tuple[int, int]]) -> bool:
+    def display_robots(self, robots: list[tuple[int, int]]) -> None:
         """Display the Robot positions.
 
         Args:
@@ -75,8 +75,7 @@ class Solution:
                 Robots to display.
 
         Returns:
-            bool:
-                If a tree was displayed or not.
+            None
         """
         grid: list[list[str]] = [["-" for _ in range(self.grid_bounds[0])] for _ in range(self.grid_bounds[1])]
 
@@ -84,13 +83,9 @@ class Solution:
             grid[robot[1]][robot[0]] = "1"
 
         lines = ["".join(line) for line in grid]
-
-        if any("1111111111" in line for line in lines):
-            for line in lines:
-                print(line)
-            print()
-            return True
-        return False
+        for line in lines:
+            print(line)
+        print()
 
     def part_01(self) -> None:
         """Solve Part 01 of the problem.
@@ -143,9 +138,13 @@ class Solution:
             for robot in self.robots:
                 new_position: tuple[int, int] = robot.calculate_position_change(repeat=i, grid_bounds=self.grid_bounds)
                 updated_robot_positions[new_position] += 1
-            had_tree: bool = self.display_robots(list(updated_robot_positions.keys()))
 
-            if had_tree:
+            # The tree would be present if all robots had a unique position.
+            # Something found when going through the problem with others.
+            # The other intuitive method would be to find the first case when a certain number of robots were in a
+            # row, thus given a tree.
+            if all(val == 1 for val in updated_robot_positions.values()):
+                self.display_robots(list(updated_robot_positions.keys()))
                 tlt = i
                 break
 
