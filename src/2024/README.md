@@ -24,7 +24,7 @@
 | [Day 13](https://adventofcode.com/2024/day/13) | Claw Contraption   | Python           | :star: :star: |
 | [Day 14](https://adventofcode.com/2024/day/14) | Restroom Redoubt   | Python, V-Lang   | :star: :star: |
 | [Day 15](https://adventofcode.com/2024/day/15) | Warehouse Woes     | Python           | :star: :star: |
-| [Day 16](https://adventofcode.com/2024/day/16) | -                  | -                | -             |
+| [Day 16](https://adventofcode.com/2024/day/16) | Reindeer Maze      | Python           | :star: :star: |
 | [Day 17](https://adventofcode.com/2024/day/17) | -                  | -                | -             |
 | [Day 18](https://adventofcode.com/2024/day/18) | -                  | -                | -             |
 | [Day 19](https://adventofcode.com/2024/day/19) | -                  | -                | -             |
