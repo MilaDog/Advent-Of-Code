@@ -246,11 +246,28 @@ class Solution:
     def part_02(self) -> None:
         """Solve Part 02 of the problem.
 
+        Have to break down the program given. From there, reverse engineer your way to the answer.
+        Attached that as a separate file.
+
         Returns:
             None
         """
-        tlt: int = 0
+        potential_A: list[int] = [0]
+        next_values: list[int] = []
 
+        for opcode in self.instructions[::-1]:
+            for rA in potential_A:
+                for bit in range(8):
+                    rB = (bit % 8) ^ 1
+                    rC = (rA + bit) >> rB
+                    rB ^= rC + 4
+
+                    if rB % 8 == opcode:
+                        next_values.append((rA + bit) << 3)
+
+            next_values, potential_A = [], next_values
+
+        tlt: int = min([rA >> 3 for rA in potential_A])
         print(f"Part 02: {tlt}")
 
 

@@ -25,7 +25,7 @@
 | [Day 14](https://adventofcode.com/2024/day/14) | Restroom Redoubt       | Python, V-Lang   | :star: :star: |
 | [Day 15](https://adventofcode.com/2024/day/15) | Warehouse Woes         | Python           | :star: :star: |
 | [Day 16](https://adventofcode.com/2024/day/16) | Reindeer Maze          | Python           | :star: :star: |
-| [Day 17](https://adventofcode.com/2024/day/17) | Chronospatial Computer | Python           | :star:        |
+| [Day 17](https://adventofcode.com/2024/day/17) | Chronospatial Computer | Python           | :star: :star: |
 | [Day 18](https://adventofcode.com/2024/day/18) | -                      | -                | -             |
 | [Day 19](https://adventofcode.com/2024/day/19) | -                      | -                | -             |
 | [Day 20](https://adventofcode.com/2024/day/20) | -                      | -                | -             |
