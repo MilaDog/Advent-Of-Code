@@ -1,6 +1,7 @@
 import heapq as hq
 import itertools
 from collections import defaultdict
+from copy import deepcopy
 from timeit import timeit
 
 from src.common.python.timing import Timing
@@ -49,13 +50,19 @@ class Solution:
             print("".join(row))
 
     def traverse(
-        self, grid: dict[tuple[int, int], str], start: tuple[int, int], end: tuple[int, int]
+        self,
+        grid: dict[tuple[int, int], str],
+        corrupt_areas: list[tuple[int, int]],
+        start: tuple[int, int],
+        end: tuple[int, int],
     ) -> set[tuple[int, int]]:
         """Traverse the grid, returning the shortest taken path.
 
         Args:
             grid (dict[tuple[int, int], str]):
                 Grid to traverse.
+            corrupt_areas (list[tuple[int, int]]):
+                Corrupt areas within the grid.
             start (tuple[int,int]):
                 Starting position.
             end (tuple[int, int]):
@@ -65,6 +72,9 @@ class Solution:
             set[tuple[int, int]]:
                 Shortest taken path.
         """
+        for ca in corrupt_areas:
+            grid[ca] = "#"
+
         pq: list[tuple[int, tuple[int, int], set[tuple[int, int]]]] = [(0, start, {start})]
         visited: set[tuple[int, int]] = set()
         taken_path: set[tuple[int, int]] = set()
@@ -103,10 +113,6 @@ class Solution:
         for x, y in itertools.product(range(self.size[0] + 1), range(self.size[1] + 1)):
             grid[(x, y)] = "."
 
-        # Simulate the position of the first 1024 bytes
-        for byte in self.byte_positions[: self.number_bytes]:
-            grid[byte] = "#"
-
         return grid
 
     def solve(self) -> None:
@@ -116,21 +122,30 @@ class Solution:
             None
         """
         grid: dict[tuple[int, int], str] = self.setup_grid()
-        path_taken: set[tuple[int, int]] = self.traverse(grid=grid, start=self.start, end=self.end)
+        path_taken: set[tuple[int, int]] = self.traverse(
+            grid=deepcopy(grid), corrupt_areas=self.byte_positions[:1024], start=self.start, end=self.end
+        )
 
         print(f"Part 01: {len(path_taken)-1}")
 
         # Finding the first coordinates that corrupt the path
-        for byte in self.byte_positions[self.number_bytes :]:
-            grid[byte] = "#"
+        low: int
+        mid: int
+        high: int
+        low, high = 1024, len(self.byte_positions)
+        mid = 0
 
-            # Check if the position blocks the shortest path.
-            if byte in path_taken:
-                # Get new path
-                path_taken = self.traverse(grid=grid, start=self.start, end=self.end)
-                if not path_taken:
-                    print(f"Part 02: {",".join(list(map(str, byte)))}")
-                    break
+        while low != high:
+            mid = (low + high) // 2
+
+            if self.traverse(
+                grid=deepcopy(grid), corrupt_areas=self.byte_positions[:mid], start=self.start, end=self.end
+            ):
+                low = mid + 1
+            else:
+                high = mid
+
+        print(f"Part 02: {",".join(list(map(str, self.byte_positions[mid])))}")
 
 
 if __name__ == "__main__":
