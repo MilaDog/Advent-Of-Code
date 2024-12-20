@@ -41,6 +41,7 @@ class Solution:
         q: deque[tuple[complex, int]] = deque([(start, 0)])
         visited: dict[complex, int] = {start: 0}
 
+        # Getting the path from START to END, with the score of following that path
         while q:
             position, score = q.popleft()
 
@@ -58,6 +59,10 @@ class Solution:
         tlt1: int = 0
         tlt2: int = 0
 
+        # For each position, determine the time saved when applying a cheat.
+        # Go from the current position and cheat to every other position, excluding itself.
+        # Calculate the distance and if within cheat range AND score is above 100,
+        # count it.
         for i, (position_1, score_1) in enumerate(visited.items()):
             for position_2, score_2 in list(visited.items())[i + 1 :]:
                 distance_change: complex = position_2 - position_1
