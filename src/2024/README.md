@@ -28,7 +28,7 @@
 | [Day 17](https://adventofcode.com/2024/day/17) | Chronospatial Computer | Python           | :star: :star: |
 | [Day 18](https://adventofcode.com/2024/day/18) | RAM Run                | Python           | :star: :star: |
 | [Day 19](https://adventofcode.com/2024/day/19) | Linen Layout           | Python           | :star: :star: |
-| [Day 20](https://adventofcode.com/2024/day/20) | -                      | -                | -             |
+| [Day 20](https://adventofcode.com/2024/day/20) | Race Condition         | Python           | :star: :star: |
 | [Day 21](https://adventofcode.com/2024/day/21) | -                      | -                | -             |
 | [Day 21](https://adventofcode.com/2024/day/22) | -                      | -                | -             |
 | [Day 23](https://adventofcode.com/2024/day/23) | -                      | -                | -             |
