@@ -2,7 +2,6 @@ from collections import defaultdict
 from functools import cache
 from itertools import pairwise
 from timeit import timeit
-from typing import Generator
 
 from src.common.python.timing import Timing
 
@@ -27,7 +26,7 @@ class Solution:
         return cls(data=values)
 
     @cache
-    def __generate_secret_number(self, number: int) -> int:
+    def generate_secret_number(self, number: int) -> int:
         """Convert the given secret number into the next secret number.
 
         Args:
@@ -39,51 +38,10 @@ class Solution:
                 New converted secret number.
 
         """
-        number = ((number << 6) ^ number) % 16777216
-        number = ((number >> 5) ^ number) % 16777216
-        number = ((number << 11) ^ number) % 16777216
+        number = ((number << 6) ^ number) & 0xFFFFFF
+        number = ((number >> 5) ^ number) & 0xFFFFFF
+        number = ((number << 11) ^ number) & 0xFFFFFF
         return number
-
-    def get_secret_numbers(self, number: int) -> Generator[int, None, None]:
-        """Generate the needed secret numbers.
-
-        Args:
-            number (int):
-                Initial secret number.
-
-        Returns:
-            int:
-                Created secret number.
-        """
-        for _ in range(2000):
-            number = self.__generate_secret_number(number=number)
-            yield number
-
-    def get_number_last_digit(self, numbers: list[int]) -> list[int]:
-        """Get the singles unit of the secret numbers, for each generated secret number.
-
-        Args:
-            numbers (list[int]):
-                List of all secret numbers.
-
-        Returns:
-            list[int]:
-                Single's unit of all secret numbers.
-        """
-        return [number % 10 for number in numbers]
-
-    def get_differences(self, values: list[int]) -> tuple[int, ...]:
-        """Get the price differences between selling values.
-
-        Args:
-            values (list[int]):
-                All selling values.
-
-        Returns:
-            list[int]:
-                Price difference between these values.
-        """
-        return tuple(b - a for a, b in pairwise(values))
 
     def solve(self) -> None:
         """Solve Part 01 and Part 02 of the problem.
@@ -92,22 +50,22 @@ class Solution:
             None
         """
         tlt1: int = 0
-
         results: dict[tuple[int, ...], int] = defaultdict(int)
+
         for number in self.data:
-            secret_numbers: list[int] = [*self.get_secret_numbers(number=number)]
+            secret_numbers: list[int] = [number] + [
+                number := self.generate_secret_number(number=number) for _ in range(2000)
+            ]
             tlt1 += secret_numbers[-1]
 
-            last_digits: list[int] = self.get_number_last_digit(numbers=secret_numbers)
+            differences: list[int] = [b % 10 - a % 10 for a, b in pairwise(secret_numbers)]
 
             seen: set[tuple[int, ...]] = set()
-            for i in range(len(last_digits) - 4):
-                values: list[int] = last_digits[i : i + 5]
-                differences: tuple[int, ...] = self.get_differences(values=values)
-
-                if differences not in seen:
-                    seen.add(differences)
-                    results[differences] += values[-1]
+            for i in range(len(secret_numbers) - 4):
+                section: tuple[int, ...] = tuple(differences[i : i + 4])
+                if section not in seen:
+                    seen.add(section)
+                    results[section] += secret_numbers[i + 4] % 10
 
         tlt2: int = max(results.values())
 
