@@ -16,7 +16,7 @@
 | [Day 05](https://adventofcode.com/2024/day/5)  | Print Queue            | Python           | :star: :star: |
 | [Day 06](https://adventofcode.com/2024/day/6)  | Guard Gallivant        | Python           | :star: :star: |
 | [Day 07](https://adventofcode.com/2024/day/7)  | Bridge Repair          | Python           | :star: :star: |
-| [Day 08](https://adventofcode.com/2024/day/8)  | -                      | -                | -             |
+| [Day 08](https://adventofcode.com/2024/day/8)  | Resonant Collinearity  | Python           | :star: :star: |
 | [Day 09](https://adventofcode.com/2024/day/9)  | Disk Fragmenter        | Python           | :star: :star: |
 | [Day 10](https://adventofcode.com/2024/day/10) | Hoof It                | Python           | :star: :star: |
 | [Day 11](https://adventofcode.com/2024/day/11) | Plutonian Pebbles      | Python           | :star: :star: |
