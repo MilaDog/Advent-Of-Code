@@ -26,8 +26,6 @@ class Solution:
                 from_, to = line.strip().split("-")
                 values[from_].add(to)
                 values[to].add(from_)
-                # values[to].add(to)
-                # values[from_].add(from_)
 
         return cls(data=values)
 
@@ -41,11 +39,13 @@ class Solution:
         seen: set[str] = set()
         for link in self.links:
             for a, b in combinations(self.links[link], 2):
-                if a in self.links[b]:
-                    if a[0] == "t" or b[0] == "t" or link[0] == "t":
-                        if "".join(sorted({a, b, link})) not in seen:
-                            seen.add("".join(sorted({a, b, link})))
-                            tlt += 1
+                if (
+                    a in self.links[b]
+                    and "t" in (a + b + link)[::2]
+                    and (network := "".join(sorted({a, b, link}))) not in seen
+                ):
+                    seen.add(network)
+                    tlt += 1
 
         print(f"Part 01: {tlt}")
 
