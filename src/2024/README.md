@@ -31,7 +31,7 @@
 | [Day 20](https://adventofcode.com/2024/day/20) | Race Condition         | Python           | :star: :star: |
 | [Day 21](https://adventofcode.com/2024/day/21) | Keypad Conundrum       | Python           | :star: :star: |
 | [Day 22](https://adventofcode.com/2024/day/22) | Monkey Market          | Python           | :star: :star: |
-| [Day 23](https://adventofcode.com/2024/day/23) | -                      | -                | -             |
+| [Day 23](https://adventofcode.com/2024/day/23) | LAN Party              | Python           | :star: :star: |
 | [Day 24](https://adventofcode.com/2024/day/24) | -                      | -                | -             |
 | [Day 25](https://adventofcode.com/2024/day/25) | -                      | -                | -             |
 
