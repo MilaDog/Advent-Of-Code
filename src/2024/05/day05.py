@@ -7,14 +7,15 @@ from src.common.python.timing import Timing
 
 
 class Solution:
+    """Solutions to the problems."""
+
     def __init__(self, data: tuple[dict[int, list[int]], list[list[int]]]) -> None:
         self.rules: dict[int, list[int]] = data[0]
         self.updates: list[list[int]] = data[1]
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -32,32 +33,26 @@ class Solution:
                 rules[int(before)].append(int(after))
 
             # Getting the updates
-            updates = [
-                [*map(int, update.strip().split(","))]
-                for update in parts[1].split("\n")
-            ]
+            updates = [[*map(int, update.strip().split(","))] for update in parts[1].split("\n")]
 
         return cls(data=(rules, updates))
 
     @classmethod
     def parse_with_regex(cls) -> "Solution":
-        """Because I can"""
+        """Because I can."""
         with open("input.txt", "r") as file:
             f = file.read()
             rules = defaultdict(list)
             for a, b in re.findall(r"(\d+)\|(\d+)", f):
                 rules[int(a)].append(int(b))
 
-            updates = [
-                list(map(int, line.split(",")))
-                for line in re.findall(r"((?:\d+,)+\d+)", f)
-            ]
+            updates = [list(map(int, line.split(","))) for line in re.findall(r"((?:\d+,)+\d+)", f)]
 
         return cls(data=(rules, updates))
 
     def is_valid_update(self, update: list[int]) -> bool:
-        """
-        Check if the given update is valid or not. For an update to be valid, all IDs in the update have to be in the correct order.
+        """Check if the given update is valid or not. For an update to be valid,
+        all IDs in the update have to be in the correct order.
         This is checked against the given update rules.
 
         Args:
@@ -79,8 +74,7 @@ class Solution:
         return True
 
     def fix_error_update(self, update: list[int]) -> None:
-        """
-        Fix a broken update. Fixes by swapping IDs to ensure that the new order of the update is valid.
+        """Fix a broken update. Fixes by swapping IDs to ensure that the new order of the update is valid.
 
         Args:
             update (list[int]):
@@ -106,8 +100,7 @@ class Solution:
             self.fix_error_update(update)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -124,8 +117,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
@@ -143,8 +135,7 @@ class Solution:
         print(f"Part 02: {tlt}")
 
     def solve_both(self) -> None:
-        """
-        Solve both problems.
+        """Solve both problems.
 
         Returns:
             None

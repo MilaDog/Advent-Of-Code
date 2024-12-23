@@ -5,13 +5,14 @@ from common.python.timing import Timing
 
 
 class Solution:
+    """Solutions to the problems."""
+
     def __init__(self, data: str) -> None:
         self.data: str = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -23,8 +24,7 @@ class Solution:
         return cls(data=values)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -40,8 +40,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
@@ -49,9 +48,7 @@ class Solution:
         tlt: int = 0
 
         multiply: bool = True
-        for do, dont, x, y in re.findall(
-            r"(do)\(\)|(don't)\(\)|mul\((\d{1,3}),(\d{1,3})\)", self.data
-        ):
+        for do, dont, x, y in re.findall(r"(do)\(\)|(don't)\(\)|mul\((\d{1,3}),(\d{1,3})\)", self.data):
             if do or dont:
                 multiply = True if do else False
 

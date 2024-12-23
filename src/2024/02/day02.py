@@ -4,28 +4,26 @@ from common.python.timing import Timing
 
 
 class Solution:
+    """Solve the problems."""
+
     def __init__(self, data: list[list[int]]) -> None:
         self.data: list[list[int]] = data
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[list[int]] = [
-                list(map(int, line.split(" "))) for line in file.readlines()
-            ]
+            values: list[list[int]] = [list(map(int, line.split(" "))) for line in file.readlines()]
 
         return cls(data=values)
 
     def check_if_safe(self, report: list[int]) -> bool:
-        """
-        Check if the given report is valid. Ensures that the following are met:
+        """Check if the given report is valid. Ensures that the following are met:
         1) Report has levels either all increasing or decreasing
         2) Adjacent levels differ at least by one and at most by three.
 
@@ -43,19 +41,13 @@ class Solution:
             [report[i - 1] > report[i] for i in range(1, len(report))]
         ):
             # Check if adjacent numbers differ min 1 max 3
-            if all(
-                [
-                    1 <= abs(report[i - 1] - report[i]) <= 3
-                    for i in range(1, len(report))
-                ]
-            ):
+            if all([1 <= abs(report[i - 1] - report[i]) <= 3 for i in range(1, len(report))]):
                 return True
 
         return False
 
     def can_fix_report(self, report: list[int]) -> bool:
-        """
-        Attempts to fix the given report by removing a single level at a time to see if that makes it valid.
+        """Attempts to fix the given report by removing a single level at a time to see if that makes it valid.
 
         Args:
             report (list[int]):
@@ -72,8 +64,7 @@ class Solution:
         return False
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -86,19 +77,13 @@ class Solution:
                 [report[i - 1] > report[i] for i in range(1, len(report))]
             ):
                 # Check if adjacent numbers differ min 1 max 3
-                if all(
-                    [
-                        1 <= abs(report[i - 1] - report[i]) <= 3
-                        for i in range(1, len(report))
-                    ]
-                ):
+                if all([1 <= abs(report[i - 1] - report[i]) <= 3 for i in range(1, len(report))]):
                     tlt += 1
 
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
