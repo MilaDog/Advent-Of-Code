@@ -6,9 +6,9 @@ from src.common.python.timing import Timing
 class Solution:
     """Solutions to the problems."""
 
-    def __init__(self, keys: list[set[complex]], locks: list[set[complex]]) -> None:
-        self.keys: list[set[complex]] = keys
-        self.locks: list[set[complex]] = locks
+    def __init__(self, keys: list[list[int]], locks: list[list[int]]) -> None:
+        self.keys: list[list[int]] = keys
+        self.locks: list[list[int]] = locks
 
     @classmethod
     def parse_input(cls) -> "Solution":
@@ -18,27 +18,17 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-
-        def get_coords(g: list[str]) -> set[complex]:
-            res: set[complex] = set()
-            for x, row in enumerate(g):
-                for y, col in enumerate(row.strip()):
-                    if col == "#":
-                        res.add(x + 1j * y)
-
-            return res
-
         with open("input.txt", "r") as file:
-            keys: list[set[complex]] = []
-            locks: list[set[complex]] = []
+            keys: list[list[int]] = []
+            locks: list[list[int]] = []
 
             for grid in file.read().strip().split("\n\n"):
-                lines: list[str] = [line.strip() for line in grid.split("\n")]
+                values: list[list[str]] = [list(line.strip()) for line in grid.split("\n")]
 
-                if lines[0][0] == "#":
-                    locks.append(get_coords(g=lines))
+                if values[0][0] == "#":
+                    locks.append([line.count("#") for line in zip(*values)])
                 else:
-                    keys.append(get_coords(g=lines))
+                    keys.append([line.count("#") for line in zip(*values)])
 
         return cls(keys=keys, locks=locks)
 
@@ -52,7 +42,7 @@ class Solution:
 
         for lock in self.locks:
             for key in self.keys:
-                tlt += not lock & key
+                tlt += all(sum(heights) <= 7 for heights in zip(key, lock))
 
         print(f"Part 01: {tlt}")
 
