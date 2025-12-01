@@ -34,10 +34,7 @@ class Solution:
                     parts: list[str] = found_Equipment.split(" ")
 
                     compatible_with: str = (
-                        f"{parts[0][0].upper()}G"
-                        if parts[1] == "microchip"
-                        else f"{parts[0][
-                        0].upper()}M"
+                        f"{parts[0][0].upper()}G" if parts[1] == "microchip" else f"{parts[0][0].upper()}M"
                     )
 
                     item: Equipment = Equipment(

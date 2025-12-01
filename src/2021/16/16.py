@@ -1,8 +1,6 @@
 inp = open("input.txt").read().strip()
 b = bin(int(inp, 16))[2:]  # Get binary value from hex
-b = b.zfill(
-    len(inp) * 4
-)  # encoding some 0, so lengths are the same (bin len = hex len * 4)
+b = b.zfill(len(inp) * 4)  # encoding some 0, so lengths are the same (bin len = hex len * 4)
 
 TOTAL_V = 0
 

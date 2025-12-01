@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 from timeit import timeit
 
 from timing import Timing
@@ -17,7 +19,7 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-        with open("input.txt", "r") as file:
+        with open(os.path.join(Path(__file__).resolve().parent, "input.txt"), "r") as file:
             values: list[str] = list(file.read().strip())
 
         return cls(data=values)

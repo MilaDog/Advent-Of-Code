@@ -72,9 +72,7 @@ def solve(part1: bool = True, amt: int = 20) -> int:
                 val, to_monkey = mnk.perform_operation(part1, lcm_)
                 monkeys[to_monkey].items.append(val)
 
-    total_monkey_inspections: list[int] = sorted(
-        [x.inspection_count for x in monkeys], reverse=True
-    )
+    total_monkey_inspections: list[int] = sorted([x.inspection_count for x in monkeys], reverse=True)
     return total_monkey_inspections[0] * total_monkey_inspections[1]
 
 

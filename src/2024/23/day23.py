@@ -68,7 +68,7 @@ class Solution:
                 if len(set(values)) > len(longest):
                     longest = set(values)
 
-        print(f"Part 02: {",".join(sorted(longest))}")
+        print(f"Part 02: {','.join(sorted(longest))}")
 
 
 if __name__ == "__main__":

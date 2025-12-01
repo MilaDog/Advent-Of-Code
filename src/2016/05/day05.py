@@ -62,7 +62,7 @@ class Solution:
                     if res[int(place)] == "#":
                         res[int(place)] = value
 
-        print(f"Part 02: {"".join(res)}")
+        print(f"Part 02: {''.join(res)}")
 
 
 if __name__ == "__main__":

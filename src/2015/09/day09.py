@@ -9,9 +9,11 @@ TEST_DATA: str = """London to Dublin = 464
 London to Belfast = 518
 Dublin to Belfast = 141"""
 
+
 def parse_line(line: str) -> list:
     _from, _to, dist = findall(r"(\w+) to (\w+) = (\d+)", line)[0]
     return [tuple(sorted((_from, _to))), int(dist)]
+
 
 def get_unique_locations(data: str) -> set:
     return set(findall(r"([a-zA-Z]+)\s+", data.replace("to", "")))
@@ -36,14 +38,14 @@ def solve() -> None:
             if i == len(perm) - 1:
                 break
 
-            x, y = l, perm[i+1]
-            d += locations.get(tuple(sorted((x,y))), 0)
+            x, y = l, perm[i + 1]
+            d += locations.get(tuple(sorted((x, y))), 0)
 
         res.append(d)
 
     print(f"Part 1: {min(res)}")
     print(f"Part 2: {max(res)}")
-        
+
 
 def main() -> None:
     solve()

@@ -13,9 +13,7 @@ Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
 Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11"""
 
 
-def calculate_scratch_card_winning_numbers(
-    drawn_numbers: set[int], scratch_card_numbers: set[int]
-) -> list[int]:
+def calculate_scratch_card_winning_numbers(drawn_numbers: set[int], scratch_card_numbers: set[int]) -> list[int]:
     """Determine the winning numbers that the given srcatch card has based on the given drawn winning numbers"""
     return drawn_numbers & scratch_card_numbers
 
@@ -39,13 +37,10 @@ def parse_scratch_cards(lines: list[str]) -> dict:
 
 def part_1(data: dict) -> int:
     """Parse each line and calculate winning score. Return total for all lines"""
-
     res: list[int] = []
 
     for winning_nums, scratch_nums in data.values():
-        win_cnt: int = len(
-            calculate_scratch_card_winning_numbers(winning_nums, scratch_nums)
-        )
+        win_cnt: int = len(calculate_scratch_card_winning_numbers(winning_nums, scratch_nums))
         # Formula to calculate score: 2^(n-1)
         res.append(int(pow(2, win_cnt - 1)))
 
@@ -54,15 +49,12 @@ def part_1(data: dict) -> int:
 
 def part_2(data: dict) -> int:
     """Calculate the number of total scratch cards experienced"""
-
     res = defaultdict(int)
 
     for i, card_data in enumerate(data.values()):
         res[i] += 1
 
-        wins: list[int] = calculate_scratch_card_winning_numbers(
-            card_data[0], card_data[1]
-        )
+        wins: list[int] = calculate_scratch_card_winning_numbers(card_data[0], card_data[1])
 
         if not wins:
             continue

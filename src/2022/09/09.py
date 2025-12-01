@@ -16,10 +16,7 @@ def position_change(val_tail: int, val_head: int) -> int:
 
 def solve(amt: int) -> int:
     Movement: namedtuple = namedtuple("Movement", "d n")
-    movements = [
-        Movement(d, int(n))
-        for d, n in [m.split() for m in open("input.txt").read().strip().splitlines()]
-    ]
+    movements = [Movement(d, int(n)) for d, n in [m.split() for m in open("input.txt").read().strip().splitlines()]]
 
     seen = list()
     knots: list[list[int]] = [[0, 0]] * amt

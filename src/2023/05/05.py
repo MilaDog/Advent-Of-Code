@@ -46,8 +46,7 @@ class SingleRange:
 
     @classmethod
     def parse(cls, data: tuple[int, int]):
-        """
-        parse Parse the given range. Result: [start, end)]
+        """Parse Parse the given range. Result: [start, end)]
 
         Args:
             data (tuple):Range data to parse
@@ -63,7 +62,8 @@ def parse_data_map(data: str) -> list[int]:
 
 def parse_seed_ranges(seeds: list[int]) -> list[tuple[int, int]]:
     """Parse the given seeds into pairs of two: (i, i+1)
-    This represents the range: [start, end)"""
+    This represents the range: [start, end)
+    """
     return [SingleRange.parse(x) for x in list(zip(seeds[::1], seeds[1::2]))]
 
 
@@ -135,10 +135,7 @@ def part_2() -> int:
                 section_range = SingleRange(src, src + lngth)
 
                 # Range is completely outside, continue
-                if (
-                    curr_seed.start >= section_range.end
-                    or curr_seed.end <= section_range.start
-                ):
+                if curr_seed.start >= section_range.end or curr_seed.end <= section_range.start:
                     continue
 
                 # Range is to the left, get left side range and add back
@@ -160,10 +157,7 @@ def part_2() -> int:
                     curr_seed = SingleRange(curr_seed.start, section_range.end)
 
                 # Range is completely inside, completed
-                if (
-                    curr_seed.start >= section_range.start
-                    and curr_seed.end <= section_range.end
-                ):
+                if curr_seed.start >= section_range.start and curr_seed.end <= section_range.end:
                     # Updating seed_range
                     start: int = dest + (curr_seed.start - section_range.start)
                     end: int = dest + (curr_seed.end - section_range.end)

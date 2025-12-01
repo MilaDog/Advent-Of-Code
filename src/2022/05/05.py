@@ -1,15 +1,15 @@
 import re
 from collections import deque
 
-TOWER, ACTIONS = open("input.txt").read().split('\n\n')
-TOWER = TOWER.replace('[', '').replace(']', '').replace('    ', 'x').replace(' ', '')
+TOWER, ACTIONS = open("input.txt").read().split("\n\n")
+TOWER = TOWER.replace("[", "").replace("]", "").replace("    ", "x").replace(" ", "")
 
 
 def part1():
     towers = [deque() for _ in range(9)]
     for t in TOWER.splitlines()[:-1][::-1]:
         for i, p in enumerate(list(t)):
-            if p != 'x':
+            if p != "x":
                 towers[i].append(p)
 
     for action in ACTIONS.splitlines():
@@ -25,7 +25,7 @@ def part2():
     towers = [deque() for _ in range(9)]
     for t in TOWER.splitlines()[:-1][::-1]:
         for i, p in enumerate(list(t)):
-            if p != 'x':
+            if p != "x":
                 towers[i].append(p)
 
     for action in ACTIONS.splitlines():

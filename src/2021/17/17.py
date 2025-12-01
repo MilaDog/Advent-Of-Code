@@ -1,11 +1,9 @@
 import re
 
-inp = re.findall(
-    r"(\d+)\.\.(\d+), y=(-?\d+)\.\.(-?\d+)", open("input.txt").read().strip()
-)
+inp = re.findall(r"(\d+)\.\.(\d+), y=(-?\d+)\.\.(-?\d+)", open("input.txt").read().strip())
 xa, xb, ya, yb = [int(x) for x in inp[0]]
 
-print(f"Part 1: {ya*(ya+1)//2}")
+print(f"Part 1: {ya * (ya + 1) // 2}")
 
 TLT = 0
 for DX in range(xb + 1):

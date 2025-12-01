@@ -16,20 +16,12 @@ class Round:
 
     @classmethod
     def parse(cls, data: str):
-        """
-        parse Parse the game round, returning Round for all coloured cubes drawn in that round
+        """Parse Parse the game round, returning Round for all coloured cubes drawn in that round
 
         Args:
             data (str): Round data
         """
-        return Round(
-            **{
-                color: int(count)
-                for count, color in (
-                    cube_data.split(" ") for cube_data in data.split(", ")
-                )
-            }
-        )
+        return Round(**{color: int(count) for count, color in (cube_data.split(" ") for cube_data in data.split(", "))})
 
 
 @dataclass
@@ -39,13 +31,11 @@ class Game:
 
     @classmethod
     def parse(cls, data: str):
-        """
-        parse Parse game data, returning object of given game
+        """Parse Parse game data, returning object of given game
 
         Args:
             data (str): Game to parse
         """
-
         header, game_data = data.split(": ")
         id = int(header.split(" ")[1])
 
@@ -56,10 +46,8 @@ class Game:
 
     @property
     def get_max_cubes(self):
+        """get_max_cubes Returns the max amount of cubes drawn during one round for the game
         """
-        get_max_cubes Returns the max amount of cubes drawn during one round for the game
-        """
-
         return (
             max(r.red for r in self.rounds),
             max(r.green for r in self.rounds),
@@ -67,16 +55,14 @@ class Game:
         )
 
     def is_valid(self):
-        """
-        is_valid Determines if the given game is valid or not
+        """is_valid Determines if the given game is valid or not
         """
         reds, greens, blues = self.get_max_cubes
         return reds <= 12 and greens <= 13 and blues <= 14
 
 
 def part_1(games: list[Game]) -> int:
-    """
-    part_1 Determine the amount of valid games from input and sum the respective Game Number
+    """part_1 Determine the amount of valid games from input and sum the respective Game Number
 
     Args:
         games (list[Game]): List of Games to check
@@ -88,8 +74,7 @@ def part_1(games: list[Game]) -> int:
 
 
 def part_2(games: list[Game]) -> int:
-    """
-    part_2 Determine the minimum amount of cubes to make a Game possible, and sum the product of each Game's minimum cube count
+    """part_2 Determine the minimum amount of cubes to make a Game possible, and sum the product of each Game's minimum cube count
 
     Args:
         games (list[Game]): List of Games to check

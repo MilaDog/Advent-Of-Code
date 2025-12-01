@@ -13,11 +13,7 @@ def bit_criteria(values, pos, get_min):
             bit1 += 1
     bitfnl = ("1", "0")[bit0 > bit1] if get_min else ("0", "1")[bit0 > bit1]
     values = [x for x in values if x[pos] == bitfnl]
-    return (
-        int(values[0], 2)
-        if len(values) == 1
-        else bit_criteria(values, pos + 1, get_min)
-    )
+    return int(values[0], 2) if len(values) == 1 else bit_criteria(values, pos + 1, get_min)
 
 
 def part1(values):

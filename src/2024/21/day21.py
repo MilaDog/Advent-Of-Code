@@ -91,7 +91,7 @@ class Solution:
                 new_res: Counter[tuple[int, int, bool]] = Counter()
 
                 for (x, y, rev), i in res.items():
-                    path: str = f"{"<" * -x}{"v" * y}{"^" * -y}{">" * x}"[:: -1 if rev else 1] + "A"
+                    path: str = f"{'<' * -x}{'v' * y}{'^' * -y}{'>' * x}"[:: -1 if rev else 1] + "A"
                     new_res.update(self.get_path(mapping=Solution.keypad(), path=path, step_count=i))
 
                 res = new_res

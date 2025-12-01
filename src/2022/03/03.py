@@ -22,9 +22,7 @@ def solve() -> None:
     # Part 2
     tlt2: int = 0
     for i in range(0, len(backpacks), 3):
-        common_char = next(
-            iter(set(backpacks[i]) & set(backpacks[i + 1]) & set(backpacks[i + 2]))
-        )
+        common_char = next(iter(set(backpacks[i]) & set(backpacks[i + 1]) & set(backpacks[i + 2])))
         tlt2 += calc_score(common_char)
 
     print(f"Part 2: {tlt2}")

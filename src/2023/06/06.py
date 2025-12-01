@@ -14,16 +14,12 @@ class Race:
 
     @classmethod
     def parse(cls, data: str):
-        """
-        parse Parse the race data. Return list of all Races
+        """Parse Parse the race data. Return list of all Races
 
         Args:
             data (str): Race data to parse
         """
-        times, distances = [
-            list(map(int, findall(r"(\d+)", line)))
-            for line in data.strip().splitlines()
-        ]
+        times, distances = [list(map(int, findall(r"(\d+)", line))) for line in data.strip().splitlines()]
 
         res: list[Race] = [Race(x, y) for (x, y) in zip(times, distances)]
 
@@ -31,8 +27,7 @@ class Race:
 
 
 def binary_search(race: Race) -> int:
-    """
-    binary_search Use of a binary search to find the number of ways that the boat button can be held to win the race.
+    """binary_search Use of a binary search to find the number of ways that the boat button can be held to win the race.
 
     Args:
         race (Race): Race to search
@@ -40,7 +35,6 @@ def binary_search(race: Race) -> int:
     Returns:
         int: Number of ways that the race can be won
     """
-
     # Want to know
     # 1) Lowest Value s.t. boat travel distance > current winning race distance
     # 2) Highest Value s.t. boat travel distance > current winning race distance
@@ -65,8 +59,7 @@ def binary_search(race: Race) -> int:
 
 
 def solve(races: list[Race]) -> int:
-    """
-    solve Solve Part 1 for the day.
+    """Solve Solve Part 1 for the day.
 
     Args:
         data (list[list[int]]): Data to use
@@ -74,7 +67,6 @@ def solve(races: list[Race]) -> int:
     Returns:
         int: Answer to Part 1
     """
-
     res: list[int] = [binary_search(race) for race in races]
     return prod(res)
 

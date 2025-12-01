@@ -37,24 +37,37 @@ class Solution:
         # Extracting all the 'X's to start searching from
         for x, y in [k for k, v in self.data.items() if v == "X"]:
             # Horizontal looking
-            if f"{self.data.get((x, y+1), 'y')}{self.data.get((x, y+2), 'y')}{self.data.get((x, y+3), 'y')}" == "MAS":
+            if (
+                f"{self.data.get((x, y + 1), 'y')}{self.data.get((x, y + 2), 'y')}{self.data.get((x, y + 3), 'y')}"
+                == "MAS"
+            ):
                 tlt += 1
 
-            if f"{self.data.get((x, y-1), 'y')}{self.data.get((x, y-2), 'y')}{self.data.get((x, y-3), 'y')}" == "MAS":
+            if (
+                f"{self.data.get((x, y - 1), 'y')}{self.data.get((x, y - 2), 'y')}{self.data.get((x, y - 3), 'y')}"
+                == "MAS"
+            ):
                 tlt += 1
 
             # Vertical looking
-            if f"{self.data.get((x+1, y), 'y')}{self.data.get((x+2, y), 'y')}{self.data.get((x+3, y), 'y')}" == "MAS":
+            if (
+                f"{self.data.get((x + 1, y), 'y')}{self.data.get((x + 2, y), 'y')}{self.data.get((x + 3, y), 'y')}"
+                == "MAS"
+            ):
                 tlt += 1
 
-            if f"{self.data.get((x-1, y), 'y')}{self.data.get((x-2, y), 'y')}{self.data.get((x-3, y), 'y')}" == "MAS":
+            if (
+                f"{self.data.get((x - 1, y), 'y')}{self.data.get((x - 2, y), 'y')}{self.data.get((x - 3, y), 'y')}"
+                == "MAS"
+            ):
                 tlt += 1
 
             # Diagonal looking
             for dx, dy in [(1, 1), (1, -1), (-1, 1), (-1, -1)]:
                 if (
-                    f"{self.data.get((x+dx, y+dy), 'y')}{self.data.get((x+(dx*2), y+(dy*2)), 'y')
-                }{self.data.get((x+(dx*3), y+(dy*3)), 'y')}"
+                    f"{self.data.get((x + dx, y + dy), 'y')}{self.data.get((x + (dx * 2), y + (dy * 2)), 'y')}{
+                        self.data.get((x + (dx * 3), y + (dy * 3)), 'y')
+                    }"
                     == "MAS"
                 ):
                     tlt += 1
@@ -72,9 +85,11 @@ class Solution:
         # Extracting all the 'X's to start searching from
         for x, y in [k for k, v in self.data.items() if v == "A"]:
             # Diagonal looking
-            diag1: str = f"{self.data.get((x+1, y+1), 'y')}{self.data.get((x, y), 'y')}{self.data.get((x-1, y-1), 'y')}"
+            diag1: str = (
+                f"{self.data.get((x + 1, y + 1), 'y')}{self.data.get((x, y), 'y')}{self.data.get((x - 1, y - 1), 'y')}"
+            )
             diag2: str = (
-                f"{self.data.get((x-1, y+1), 'y')}{self.data.get((x, y), 'y')}" f"{self.data.get((x+1, y-1), 'y')}"
+                f"{self.data.get((x - 1, y + 1), 'y')}{self.data.get((x, y), 'y')}{self.data.get((x + 1, y - 1), 'y')}"
             )
 
             if (diag1 == "MAS" or diag1[::-1] == "MAS") and (diag2 == "MAS" or diag2[::-1] == "MAS"):

@@ -1,10 +1,7 @@
 def get_input():
     with open("input.txt", "r") as f:
         numbers = [int(num) for num in f.readline().split(",")]
-        boards = [
-            [[*map(int, r.split())] for r in b.split("\n")]
-            for b in f.read().strip().split("\n\n")
-        ]
+        boards = [[[*map(int, r.split())] for r in b.split("\n")] for b in f.read().strip().split("\n\n")]
         return numbers, boards
 
 
@@ -20,10 +17,7 @@ def check_board(win_index):
             for line in rows_and_cols:
                 if all(n in checked for n in line) and board not in bingo:
                     bingo.append(board)
-                    scores.append(
-                        sum(sum(n for n in line if n not in checked) for line in board)
-                        * num
-                    )
+                    scores.append(sum(sum(n for n in line if n not in checked) for line in board) * num)
     return scores[win_index]
 
 

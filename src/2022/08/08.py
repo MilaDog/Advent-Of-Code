@@ -6,9 +6,7 @@ def count_smaller_trees(val: int, row: list[int]) -> int:
 
 
 def solve() -> None:
-    grid = [
-        list(map(int, list(x.strip()))) for x in open("input.txt").read().splitlines()
-    ]
+    grid = [list(map(int, list(x.strip()))) for x in open("input.txt").read().splitlines()]
     grid_zipped = list(map(list, list(zip(*grid))))
 
     tlt1: int = (len(grid[0]) - 1) * 4  # Getting the edges of visible trees

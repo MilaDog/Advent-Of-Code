@@ -12,4 +12,4 @@ print(f"Part 1: {max(S)}")
 
 for i in S:
     if i + 1 not in S and i + 2 in S:
-        print(f"Part 2: {i+1}")
+        print(f"Part 2: {i + 1}")

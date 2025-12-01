@@ -89,7 +89,7 @@ class Solution:
                 return v
 
             a, b, op = d[v]
-            return f"({get_path(a, dd-1)} {op} {get_path(b, dd-1)})"
+            return f"({get_path(a, dd - 1)} {op} {get_path(b, dd - 1)})"
 
         for i in range(1, 46):
             c = "z" + f"{i}".zfill(2)

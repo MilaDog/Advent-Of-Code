@@ -3,9 +3,7 @@ import re
 
 def get_input():
     coords = [x for x in re.findall(r"(\d+),(\d+)", open("input.txt").read())]
-    folds = [
-        x for x in re.findall(r"fold along ([xy])=(\d+)", open("input.txt").read())
-    ]
+    folds = [x for x in re.findall(r"fold along ([xy])=(\d+)", open("input.txt").read())]
 
     coords = [(int(x), int(y)) for x, y in coords]
     folds = [(a, int(n)) for a, n in folds]

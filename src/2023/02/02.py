@@ -28,8 +28,7 @@ def solve(lines: list[str]) -> (int, int):
                 cubes_amt_part2[colour] = int(amt)
 
             if any(
-                True if cubes_amt.get(colour, 0) > DATA_CUBES.get(colour, 0) else False
-                for colour in DATA_CUBES.keys()
+                True if cubes_amt.get(colour, 0) > DATA_CUBES.get(colour, 0) else False for colour in DATA_CUBES.keys()
             ):
                 valid = False
 
@@ -45,7 +44,6 @@ def solve(lines: list[str]) -> (int, int):
 
 def main() -> None:
     """Main function"""
-
     with open("input.txt") as file:
         lines: list[str] = [x.strip() for x in file.readlines()]
 

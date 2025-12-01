@@ -126,7 +126,7 @@ class Solution:
             grid=deepcopy(grid), corrupt_areas=self.byte_positions[:1024], start=self.start, end=self.end
         )
 
-        print(f"Part 01: {len(path_taken)-1}")
+        print(f"Part 01: {len(path_taken) - 1}")
 
         # Finding the first coordinates that corrupt the path
         low: int
@@ -145,7 +145,7 @@ class Solution:
             else:
                 high = mid
 
-        print(f"Part 02: {",".join(list(map(str, self.byte_positions[mid])))}")
+        print(f"Part 02: {','.join(list(map(str, self.byte_positions[mid])))}")
 
 
 if __name__ == "__main__":

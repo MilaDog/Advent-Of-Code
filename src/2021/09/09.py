@@ -57,11 +57,7 @@ def part2(data):
                     for d in range(4):
                         jj = j + DR[d]
                         ii = i + DC[d]
-                        if (
-                            0 <= ii < len(data[0])
-                            and 0 <= jj < len(data)
-                            and data[jj][ii] != 9
-                        ):
+                        if 0 <= ii < len(data[0]) and 0 <= jj < len(data) and data[jj][ii] != 9:
                             Q.append((jj, ii))
 
                 sizes.append(size)

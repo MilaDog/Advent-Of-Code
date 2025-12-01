@@ -34,7 +34,9 @@ class Solution:
                 Sum of each capture's repeating digit.
         """
         # captcha + captcha[:amount] due to being circular.
-        return sum(int(val) for val in re.findall(rf"(\d)(?=.{{{amount-1}}}\1)", self.captcha + self.captcha[:amount]))
+        return sum(
+            int(val) for val in re.findall(rf"(\d)(?=.{{{amount - 1}}}\1)", self.captcha + self.captcha[:amount])
+        )
 
     def part_01(self) -> None:
         """Solve Part 01 of the problem.

@@ -42,7 +42,7 @@ def main() -> None:
             else:
                 res += solve(cols, i)
 
-        print(f"Part {i+1}: {res}")
+        print(f"Part {i + 1}: {res}")
 
 
 if __name__ == "__main__":

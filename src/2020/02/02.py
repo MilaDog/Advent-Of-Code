@@ -23,8 +23,7 @@ def part2(pwds):
         ind1, ind2 = map(int, rng.split("-"))
 
         tlt.append(
-            int(pwd[ind1 - 1] == char and pwd[ind2 - 1] != char)
-            or int(pwd[ind1 - 1] != char and pwd[ind2 - 1] == char)
+            int(pwd[ind1 - 1] == char and pwd[ind2 - 1] != char) or int(pwd[ind1 - 1] != char and pwd[ind2 - 1] == char)
         )
     return sum(tlt)
 

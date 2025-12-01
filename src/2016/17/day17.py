@@ -57,7 +57,7 @@ class Solution:
 
                 if (dx, dy) == target:
                     if not part01:
-                        print(f"Part 01: {"".join(processed_directions + [direction])}")
+                        print(f"Part 01: {''.join(processed_directions + [direction])}")
                         part01 = True
                     max_length = len(processed_directions + [direction])
 
