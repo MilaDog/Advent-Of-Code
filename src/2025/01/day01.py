@@ -22,36 +22,14 @@ class Solution:
 
         return cls(data=values)
 
-    def part_01(self) -> None:
-        """Solve Part 01 of the problem.
+    def solve(self) -> None:
+        """Solve Part 01 and 02 of the problem.
 
         Returns:
             None
         """
-        tlt: int = 0
-
-        pointing: int = 50
-
-        for action, amount in self.data:
-            if action == "L":
-                pointing -= amount
-            else:
-                pointing += amount
-
-            pointing %= 100
-
-            if pointing == 0:
-                tlt += 1
-
-        print(f"Part 01: {tlt}")
-
-    def part_02(self) -> None:
-        """Solve Part 02 of the problem.
-
-        Returns:
-            None
-        """
-        tlt: int = 0
+        tlt1: int = 0
+        tlt2: int = 0
 
         pointing: int = 50
 
@@ -63,13 +41,16 @@ class Solution:
                     pointing = (pointing + 1) % 100
 
                 if pointing == 0:
-                    tlt += 1
+                    tlt2 += 1
 
-        print(f"Part 02: {tlt}")
+            if pointing == 0:
+                tlt1 += 1
+
+        print(f"Part 01: {tlt1}")
+        print(f"Part 02: {tlt2}")
 
 
 if __name__ == "__main__":
     sol: Solution = Solution.parse_input()
 
-    print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
-    print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
+    print(Timing(timeit(sol.solve, number=1)).result(), "\n")
