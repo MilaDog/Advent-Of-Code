@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from enum import Enum
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Directions(Enum):
@@ -59,8 +59,7 @@ class Grid:
 
     @staticmethod
     def parse_data(data: str) -> list[list[Cell]]:
-        """
-        parse_data Parse the input data 2D Matrix of cells
+        """parse_data Parse the input data 2D Matrix of cells
 
         Args:
             data (str): Data to parse
@@ -87,17 +86,14 @@ class Grid:
 
     @classmethod
     def read_input(cls):
-        """
-        read_input Read the input data for the problem
-        """
+        """read_input Read the input data for the problem"""
         with open("input.txt", "r") as file:
             data: str = file.read().strip()
 
         return cls(cls.parse_data(data))
 
     def _find_starting_point(self) -> tuple[int, int, Cell]:
-        """
-        _find_starting_point Find the starting point of the grid
+        """_find_starting_point Find the starting point of the grid
 
         Returns:
             Cell: Starting point of grid
@@ -110,8 +106,7 @@ class Grid:
         raise Exception("Cannot find a starting point")
 
     def _is_within_grid_bounds(self, x: int, y: int) -> bool:
-        """
-        _is_within_grid_bounds Determine if the coordinates are within the grid's bounds
+        """_is_within_grid_bounds Determine if the coordinates are within the grid's bounds
 
         Args:
             x (int): X Coordinate
@@ -123,8 +118,7 @@ class Grid:
         return 0 <= x < self.height and 0 <= y < self.width
 
     def _determine_grid_loop(self) -> list[tuple[int, int]]:
-        """
-        _determine_grid_loop Determine the loop of the grid
+        """_determine_grid_loop Determine the loop of the grid
 
         Returns:
             list[tuple[int, int]]: Closed loop in the grid
@@ -152,23 +146,14 @@ class Grid:
                     if self._is_within_grid_bounds(dx, dy):
                         target_cell: Cell = self.grid[dx][dy]
 
-                        if (
-                            target_cell.symbol == Symbols.EMPTY
-                            or (dx, dy, target_cell) in visited
-                        ):
+                        if target_cell.symbol == Symbols.EMPTY or (dx, dy, target_cell) in visited:
                             continue
 
                         # Checking that you can enter the target_cell from current_cell
-                        if (
-                            DIRECTION_PAIRS.get(direction) is None
-                            or target_cell.entrances.value is None
-                        ):
+                        if DIRECTION_PAIRS.get(direction) is None or target_cell.entrances.value is None:
                             continue
 
-                        if (
-                            DIRECTION_PAIRS.get(direction)
-                            in target_cell.entrances.value
-                        ):
+                        if DIRECTION_PAIRS.get(direction) in target_cell.entrances.value:
                             # Choosing initial route
                             if current_cell.symbol == Symbols.START:
                                 queue.append((dx, dy, target_cell))
@@ -179,21 +164,16 @@ class Grid:
         return loop
 
     def _shoelace_formula(self) -> float:
-        """
-        _shoelace_formula Calculate the area of the polygon using Shoelace Formula
+        """_shoelace_formula Calculate the area of the polygon using Shoelace Formula
 
         Returns:
             float: Area of the polygon
         """
         x, y = zip(*self.loop)
-        return (
-            abs(sum(x[i] * y[i - 1] - x[i - 1] * y[i] for i in range(len(self.loop))))
-            // 2
-        )
+        return abs(sum(x[i] * y[i - 1] - x[i - 1] * y[i] for i in range(len(self.loop)))) // 2
 
     def _picks_theorem(self, area: float) -> int:
-        """
-        _picks_theorem Determine the number of empty cells inside the polygon
+        """_picks_theorem Determine the number of empty cells inside the polygon
 
         Args:
             area (float): Area of the polygon

@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -9,8 +9,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -22,8 +21,7 @@ class Solution:
         return cls(data=value)
 
     def transform(self, value: str) -> str:
-        """
-        Transform the data into desired form.
+        """Transform the data into desired form.
         With the given value, make copy and reverse. Replace all 1s with 0s and 0s with 1s.
         Return original value and transformed values joined with `0`.
 
@@ -41,8 +39,7 @@ class Solution:
         return value + "0" + modified
 
     def calculate_checksum(self, value: str) -> str:
-        """
-        Determine the checksum for the given value.
+        """Determine the checksum for the given value.
         If calculated checksum's length is even, calculate again with the newly calculated value.
         Else, return.
 
@@ -56,9 +53,7 @@ class Solution:
         """
         checksum: list[str] = []
 
-        for a, b in zip(
-            value[::2], value[1::2]
-        ):  # faster than using regex to get the pairs
+        for a, b in zip(value[::2], value[1::2]):  # faster than using regex to get the pairs
             checksum.append(str(int(a == b)))
 
         if len(checksum) % 2 == 0:
@@ -66,8 +61,7 @@ class Solution:
         return "".join(checksum)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -82,8 +76,7 @@ class Solution:
         print(f"Part 01: {res}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

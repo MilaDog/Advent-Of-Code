@@ -2,7 +2,7 @@ from timeit import timeit
 
 import regex
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -11,8 +11,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -24,8 +23,7 @@ class Solution:
         return cls(data=values)
 
     def determine_new_tile_type(self, determining_tiles: str) -> str:
-        """
-        Determine the type of tile in the new row based on tiles in the previous row to the left, center and right.
+        """Determine the type of tile in the new row based on tiles in the previous row to the left, center and right.
 
         Args:
             determining_tiles (str):
@@ -40,8 +38,7 @@ class Solution:
         return "."
 
     def create_grid(self, rows: int) -> int:
-        """
-        Create the grid with the given amount of rows and return the amount of safe spots within the grid.
+        """Create the grid with the given amount of rows and return the amount of safe spots within the grid.
 
         Args:
             rows (int):
@@ -55,17 +52,14 @@ class Solution:
         for _ in range(rows - 1):
             new_role: list[str] = [
                 self.determine_new_tile_type(tiles)
-                for tiles in regex.findall(
-                    r"([.^]{3})", f".{grid[-1]}.", overlapped=True
-                )
+                for tiles in regex.findall(r"([.^]{3})", f".{grid[-1]}.", overlapped=True)
             ]
             grid.append("".join(new_role))
 
         return sum([tile.count(".") for tile in grid])
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -73,8 +67,7 @@ class Solution:
         print(f"Part 01: {self.create_grid(rows=40)}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

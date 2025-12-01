@@ -1,8 +1,9 @@
 from collections import Counter
 from timeit import timeit
-from typing import List, Counter as Counter_, Tuple
+from typing import Counter as Counter_
+from typing import List, Tuple
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -11,8 +12,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -24,8 +24,7 @@ class Solution:
         return cls(data=values)
 
     def __update_position(self, position: Tuple[int, int], direction: str) -> Tuple[int, int]:
-        """
-        Update the person's current position according to the given direction.
+        """Update the person's current position according to the given direction.
 
         Args:
             position (Tuple[int, int]):
@@ -58,8 +57,7 @@ class Solution:
         raise Exception("Invalid direction given.")
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -76,8 +74,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

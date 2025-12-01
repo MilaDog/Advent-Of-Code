@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 def read_data() -> str:
@@ -22,7 +22,6 @@ def step(dirr: str) -> tuple[int, int]:
 
 def solve(grid: list[list[str]], start: tuple[int, int, str]) -> int:
     """Solve the problem, return the number of energised cells"""
-
     visited_cells: set = set()  # tuple[x, y, direction]
     unvisited_directions: list[tuple[int, int, str]] = [start]
 

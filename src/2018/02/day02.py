@@ -1,11 +1,9 @@
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
-    """Solutions to the problems."""
-
     def __init__(self, data: list[str]) -> None:
         self.data: list[str] = data
 

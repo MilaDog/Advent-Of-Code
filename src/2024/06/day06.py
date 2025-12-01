@@ -1,7 +1,7 @@
 from copy import deepcopy
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

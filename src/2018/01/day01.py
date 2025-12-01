@@ -1,6 +1,7 @@
+import itertools
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -9,8 +10,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -22,8 +22,7 @@ class Solution:
         return cls(data=values)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -32,20 +31,20 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
         """
         seen: set[int] = set()
 
-        index: int = 0
         frequency: int = 0
-        while frequency not in seen:
+        for value in itertools.cycle(self.data):
+            if frequency in seen:
+                break
+
             seen.add(frequency)
-            frequency += self.data[index]
-            index = (index + 1) % len(self.data)
+            frequency += value
 
         print(f"Part 02: {frequency}")
 

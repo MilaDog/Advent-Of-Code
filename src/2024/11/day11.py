@@ -1,7 +1,7 @@
 from functools import lru_cache
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -66,9 +66,7 @@ class Solution:
             int:
                 Number of stones after LIMIT mutation iterations.
         """
-        return sum(
-            self.mutate(stone=stone, amount=0, limit=limit) for stone in self.stones
-        )
+        return sum(self.mutate(stone=stone, amount=0, limit=limit) for stone in self.stones)
 
     def part_01(self) -> None:
         """Solve Part 01 of the problem.

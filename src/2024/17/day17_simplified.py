@@ -3,7 +3,7 @@ from collections import defaultdict
 from timeit import timeit
 from typing import Any, Generator
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

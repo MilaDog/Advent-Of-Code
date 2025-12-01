@@ -4,7 +4,7 @@ from copy import deepcopy
 from itertools import cycle, islice
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -13,23 +13,19 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[int] = [
-                int(x) for x in re.findall(r"(\d+)", file.read().strip())
-            ]
+            values: list[int] = [int(x) for x in re.findall(r"(\d+)", file.read().strip())]
 
         return cls(data=values)
 
     def solve(self) -> None:
-        """
-        Solve Part 01 and 02 of the problem.
+        """Solve Part 01 and 02 of the problem.
 
         Returns:
             None

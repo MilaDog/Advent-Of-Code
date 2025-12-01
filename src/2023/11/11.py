@@ -2,7 +2,7 @@ from dataclasses import dataclass
 from itertools import combinations
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 @dataclass
@@ -20,8 +20,8 @@ class Cell:
 class Image:
     def __init__(self, expanse_amount: int = 2):
         """Read the image data. Constructs a 2D matrix, where each cell contains its coordinates
-        and whether or not a galaxy is present"""
-
+        and whether or not a galaxy is present
+        """
         with open("input.txt", "r") as file:
             data = file.read().splitlines()
 
@@ -97,7 +97,6 @@ def solve(expanse_amount: int = 2) -> int:
 
 def main() -> None:
     """Entry point for problem"""
-
     print(f"Part 1: {solve(expanse_amount=2)}")
     print(f"Part 2: {solve(expanse_amount=10**6)}")
 

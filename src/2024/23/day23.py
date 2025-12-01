@@ -2,7 +2,7 @@ from collections import Counter, defaultdict
 from itertools import combinations
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

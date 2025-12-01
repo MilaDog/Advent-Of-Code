@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 def calculate_difference_level_for_mirrored_values(pair) -> int:
@@ -26,7 +26,6 @@ def solve(grid, smudge_level) -> int:
 
 def main() -> None:
     """Entry point to solving the problem"""
-
     with open("input.txt", "r") as file:
         data = file.read()
     grids = data.strip().split("\n\n")

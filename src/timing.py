@@ -6,9 +6,7 @@ from enum import Enum
 
 
 class TimingSymbols(Enum):
-    """
-    TimingSymbols Symbols used for representing timing values
-    """
+    """TimingSymbols Symbols used for representing timing values"""
 
     SECONDS = "s"
     MILLISECONDS = "ms"
@@ -46,14 +44,11 @@ class Timing:
 
     def __str__(self):
         """Get the string representation of the object"""
-        s: str = (
-            "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d"
-            % (
-                self._seconds,
-                self._milliseconds,
-                self._microseconds,
-                self._nanoseconds,
-            )
+        s: str = "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d" % (
+            self._seconds,
+            self._milliseconds,
+            self._microseconds,
+            self._nanoseconds,
         )
         return s
 

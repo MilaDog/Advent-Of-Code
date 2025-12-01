@@ -3,7 +3,7 @@ from functools import cache
 from itertools import pairwise
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

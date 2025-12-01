@@ -3,7 +3,7 @@ import hashlib
 import re
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -12,8 +12,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -26,8 +25,7 @@ class Solution:
 
     @functools.lru_cache(maxsize=None)
     def get_hash_hex(self, value: str, repeat: int = 1) -> str:
-        """
-        Hash the given value and return the hex.
+        """Hash the given value and return the hex.
 
         Args:
             value (str):
@@ -45,8 +43,7 @@ class Solution:
         return value
 
     def solve(self, stretch: bool = False) -> int:
-        """
-        Solve the MD5 hash problem.
+        """Solve the MD5 hash problem.
 
         Args:
             stretch (bool):
@@ -60,17 +57,13 @@ class Solution:
         index: int = 0
 
         while True:
-            hashed: str = self.get_hash_hex(
-                f"{self.data}{index}", 2017 if stretch else 1
-            )
+            hashed: str = self.get_hash_hex(f"{self.data}{index}", 2017 if stretch else 1)
 
             if x := re.search(r"(\w)\1{2}", hashed):
                 # Check the next 1000 hashes
                 check: str = x.group(0)[0] * 5
                 for i in range(index + 1, index + 1001):
-                    if check in self.get_hash_hex(
-                        f"{self.data}{i}", 2017 if stretch else 1
-                    ):
+                    if check in self.get_hash_hex(f"{self.data}{i}", 2017 if stretch else 1):
                         tlt += 1
 
                         if tlt == 64:
@@ -81,8 +74,7 @@ class Solution:
             index += 1
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -91,8 +83,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

@@ -1,7 +1,7 @@
 from collections import deque
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -10,8 +10,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -23,8 +22,7 @@ class Solution:
         return cls(data=values)
 
     def is_wall(self, coords: tuple[int, int]) -> bool:
-        """
-        Determines if the given coordinates represents a wall or not.
+        """Determines if the given coordinates represents a wall or not.
 
         Args:
             coords (tuple[int, int):
@@ -45,8 +43,7 @@ class Solution:
         return val.bit_count() % 2 == 1
 
     def solve(self) -> None:
-        """
-        Solve Part 01 and 02 of the problem.
+        """Solve Part 01 and 02 of the problem.
 
         Returns:
             None
@@ -76,12 +73,7 @@ class Solution:
 
             for dx, dy in ((1, 0), (0, 1), (-1, 0), (0, -1)):
                 # Either coordinate cannot be negative.
-                if (
-                    (x + dx, y + dy) in seen
-                    or x + dx < 0
-                    or y + dy < 0
-                    or self.is_wall((x + dx, y + dy))
-                ):
+                if (x + dx, y + dy) in seen or x + dx < 0 or y + dy < 0 or self.is_wall((x + dx, y + dy)):
                     continue
 
                 q.append((x + dx, y + dy, steps + 1))

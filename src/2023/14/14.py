@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Dish:
@@ -21,9 +21,7 @@ class Dish:
 
     def _get_data_coords(self) -> dict[tuple[int, int], str]:
         """Get a dictionary of all data coordinates and the value at that position"""
-        return {
-            (i, j): c for i, row in enumerate(self._data) for j, c in enumerate(row)
-        }
+        return {(i, j): c for i, row in enumerate(self._data) for j, c in enumerate(row)}
 
     def data(self) -> list[list[str]]:
         """Get the dish data"""

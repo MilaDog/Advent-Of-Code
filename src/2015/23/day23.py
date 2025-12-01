@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -9,8 +9,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -22,8 +21,7 @@ class Solution:
         return cls(data=values)
 
     def execute_instructions(self, a_value: int = 0) -> int:
-        """
-        Execute the computer program instructions. Return the result in register `b` when done.
+        """Execute the computer program instructions. Return the result in register `b` when done.
 
         Args:
             a_value (int):
@@ -69,8 +67,7 @@ class Solution:
         return registers["b"]
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -79,8 +76,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

@@ -3,7 +3,7 @@ from collections import defaultdict
 from dataclasses import dataclass
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 @dataclass
@@ -22,8 +22,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -42,8 +41,7 @@ class Solution:
         return cls(data=(values, bots))
 
     def __parse_bot_action(self, action: str) -> BotAction:
-        """
-        Parse the given bot action.
+        """Parse the given bot action.
 
         Args:
             action (str):
@@ -63,8 +61,7 @@ class Solution:
         )
 
     def __get_next_bot(self, bots: dict[int, list[int]]) -> int:
-        """
-        Get the next bot to process if it has two available microchips in its inventory.
+        """Get the next bot to process if it has two available microchips in its inventory.
 
         Args:
             bots (dict[int, list[int]]):
@@ -78,13 +75,11 @@ class Solution:
         return possible_bots[0] if possible_bots else -1
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
         """
-
         bots: dict[int, list[int]] = defaultdict(list)
         actions: dict[int, list[BotAction]] = defaultdict(list)
 
@@ -122,8 +117,7 @@ class Solution:
             bots[curr_bot_id].clear()
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

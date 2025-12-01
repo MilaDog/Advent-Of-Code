@@ -2,7 +2,7 @@ import re
 from dataclasses import dataclass
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 @dataclass

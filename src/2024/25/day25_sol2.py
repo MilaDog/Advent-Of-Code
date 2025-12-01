@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -35,7 +35,6 @@ class Solution:
             for grid in file.read().strip().split("\n\n"):
                 lines: list[str] = [line.strip() for line in grid.split("\n")]
 
-                if lines[0][0] == "#":
                     locks.append(get_coords(g=lines))
                 else:
                     keys.append(get_coords(g=lines))

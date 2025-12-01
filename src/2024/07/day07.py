@@ -1,7 +1,7 @@
 from math import floor, log10
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

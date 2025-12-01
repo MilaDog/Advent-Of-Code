@@ -1,7 +1,7 @@
 import re
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Disk:
@@ -12,8 +12,7 @@ class Disk:
 
     @classmethod
     def parse(cls, line: str) -> "Disk":
-        """
-        Parse the string to get the details of the Disk.
+        """Parse the string to get the details of the Disk.
 
         Args:
             line (str):
@@ -37,8 +36,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -50,8 +48,7 @@ class Solution:
         return cls(data=values)
 
     def crt(self, time: int, position: int, total_positions: int) -> bool:
-        """
-        Using Chinese Remainder Theorem to solve when the best time to drop the capsule is.
+        """Using Chinese Remainder Theorem to solve when the best time to drop the capsule is.
         Valid if result is equal to 0, indicating level 0.
 
         So, a MOD m => X, where a -> (time + position), m -> number of positions, X -> target level 0.
@@ -71,8 +68,7 @@ class Solution:
         return (time + position) % total_positions == 0
 
     def solve(self, part02: bool = False) -> int:
-        """
-        Solve the given part. Find time when all disk will be on level 0.
+        """Solve the given part. Find time when all disk will be on level 0.
 
         Args:
             part02 (bool):
@@ -106,8 +102,7 @@ class Solution:
             tlt += 1
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -116,8 +111,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

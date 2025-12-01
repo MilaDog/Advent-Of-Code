@@ -1,9 +1,9 @@
-from collections import namedtuple, defaultdict
+from collections import defaultdict, namedtuple
 from enum import Enum
 from heapq import heappop, heappush
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Directions(Enum):
@@ -11,6 +11,7 @@ class Directions(Enum):
     EAST: tuple[int, int] = (0, 1)
     SOUTH: tuple[int, int] = (1, 0)
     WEST: tuple[int, int] = (0, -1)
+
 
 class Node:
     def __init__(self, weight: int, distance: int, coords: namedtuple):
@@ -20,14 +21,15 @@ class Node:
 
     def __lt__(self, other) -> bool:
         return self.distance < other.distance
-    
+
     def __str__(self) -> str:
         """Stringed version of data"""
         return f"Node: weight={self.weight}; distance={self.distance}; coords={self.coords}"
-    
+
     def __repr__(self) -> str:
         """Stringed version of data"""
         return f"Node: weight={self.weight}; distance={self.distance}; coords={self.coords}"
+
 
 class Grid:
     def __init__(self, data: str) -> None:
@@ -53,15 +55,15 @@ class Grid:
             row: list[Node] = []
             for y, weight in enumerate(list(line.strip())):
                 row.append(Node(int(weight), 0, coords_(x, y)))
-            
+
             res.append(row)
 
         return res
-    
+
     def within_grid(self, x: int, y: int) -> bool:
         """Check if the current node is within the grid"""
-        return 0 <= x < self.height - 1 and 0 <= y < self.width -1
-    
+        return 0 <= x < self.height - 1 and 0 <= y < self.width - 1
+
     def get_adjacent_nodes(self, node: Node, cannot_go: Directions = None) -> list[Node] | None:
         """Get a list of all adjacent nodes and their direction"""
         if node is None:
@@ -82,10 +84,9 @@ class Grid:
         return res if res else None
 
 
-
 def solve(grid: Grid, start: Node) -> int:
     """Solve the problem. Return the distance of shortest path"""
-    pq: list = [(start, (None, 0))]   # tuple[Node, tuple[Direction, step_count]]
+    pq: list = [(start, (None, 0))]  # tuple[Node, tuple[Direction, step_count]]
     visited = set()
 
     distances: defaultdict[Node, int] = {}
@@ -114,15 +115,16 @@ def solve(grid: Grid, start: Node) -> int:
             # if adjacent_node not in distances:
             #     distances[adjacent_node] = adjacent_node.weight
 
-            # else: 
+            # else:
             if curr.distance + adjacent_node.weight < adjacent_node.distance:
                 adjacent_node.distance = curr.distance + adjacent_node.weight
 
-                step_cnt: int = step[1]+ 1 if step[0] == adj.dirr else 0
+                step_cnt: int = step[1] + 1 if step[0] == adj.dirr else 0
                 grid.grid[adj.x][adj.y] = adjacent_node
                 heappush(pq, (adjacent_node, (adj.dirr, step_cnt)))
-    
-    return grid.grid[grid.height-1][grid.width-1].distance
+
+    return grid.grid[grid.height - 1][grid.width - 1].distance
+
 
 def main() -> None:
     """Main entry point for problem"""

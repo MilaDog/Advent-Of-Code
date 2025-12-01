@@ -11,16 +11,17 @@ load_dotenv()
 PARSER = argparse.ArgumentParser()
 
 PARSER.add_argument("-d", "--day", help="Day of the event to get. [01, 25]")
-PARSER.add_argument(
-    "-y", "--year", help="Year of the event to get. [2015, current-year)"
-)
+PARSER.add_argument("-y", "--year", help="Year of the event to get. [2015, current-year)")
 
 
 def get_day_input(day: int, year: int) -> str:
     """Get the input for the given problem."""
     req = requests.get(
         f"https://adventofcode.com/{year}/day/{day}/input",
-        headers={"cookie": f"session={os.getenv('AOC_SESSION_COOKIE')}"},
+        headers={
+            "cookie": f"session={os.getenv('AOC_SESSION_COOKIE')}",
+            "User-Agent": "MilaDog <daniel.ryan.sergeant@gmail.com>",
+        },
     )
     return req.text
 
@@ -37,6 +38,10 @@ def main() -> None:
         print(f"Invalid day {day}.")
         invalid = True
 
+    if day > 12 and year == 2025:
+        print(f"Invalid day {day}.")
+        invalid = True
+
     if year < 2015 or year > dt.now().year:
         print(f"Invalid year {year}.")
         invalid = True
@@ -47,7 +52,7 @@ def main() -> None:
     try:
         # Loading the template
         template: str
-        with open("common/python/template.py") as file:
+        with open("templates/template.py") as file:
             template = file.read()
 
         # Creating folder

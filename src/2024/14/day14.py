@@ -4,7 +4,7 @@ from functools import reduce
 from operator import mul
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Robot:

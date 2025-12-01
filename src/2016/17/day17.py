@@ -4,7 +4,7 @@ from collections.abc import Callable
 from itertools import compress
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -19,8 +19,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -32,8 +31,7 @@ class Solution:
         return cls(data=value)
 
     def solve(self) -> None:
-        """
-        Solve both parts.
+        """Solve both parts.
 
         Returns:
             None
@@ -51,9 +49,7 @@ class Solution:
             processed_directions: list[str]
             x, y, processed_directions = q.popleft()
 
-            hashed: str = hashlib.md5(
-                f"{self.data}{''.join(processed_directions).upper()}".encode()
-            ).hexdigest()
+            hashed: str = hashlib.md5(f"{self.data}{''.join(processed_directions).upper()}".encode()).hexdigest()
             doors: list[bool] = [int(x, 16) > 10 for x in hashed[:4]]
 
             for direction in compress("UDLR", doors):

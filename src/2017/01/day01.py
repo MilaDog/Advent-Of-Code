@@ -1,7 +1,7 @@
 import re
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -10,8 +10,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -23,8 +22,7 @@ class Solution:
         return cls(data=value)
 
     def solve(self, amount: int) -> int:
-        """
-        Solve the captcha by finding the digits that are followed by the same digit `amount` times.
+        """Solve the captcha by finding the digits that are followed by the same digit `amount` times.
         Return the sum of each capture's repeating digit.
 
         Args:
@@ -36,16 +34,10 @@ class Solution:
                 Sum of each capture's repeating digit.
         """
         # captcha + captcha[:amount] due to being circular.
-        return sum(
-            int(val)
-            for val in re.findall(
-                rf"(\d)(?=.{{{amount-1}}}\1)", self.captcha + self.captcha[:amount]
-            )
-        )
+        return sum(int(val) for val in re.findall(rf"(\d)(?=.{{{amount-1}}}\1)", self.captcha + self.captcha[:amount]))
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -54,8 +46,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

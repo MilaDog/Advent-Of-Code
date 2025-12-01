@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -9,25 +9,19 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[tuple[str, int]] = [
-                (action[0], int(action[1:])) for action in file.read().split(", ")
-            ]
+            values: list[tuple[str, int]] = [(action[0], int(action[1:])) for action in file.read().split(", ")]
 
         return cls(data=values)
 
-    def move(
-        self, position: tuple[int, int], direction: int, distance: int
-    ) -> tuple[int, int]:
-        """
-        Move the bunny in the given direction by the given distance.
+    def move(self, position: tuple[int, int], direction: int, distance: int) -> tuple[int, int]:
+        """Move the bunny in the given direction by the given distance.
 
         Args:
             position (tuple[int, int]):
@@ -43,13 +37,10 @@ class Solution:
         """
         FACTORS: list[tuple[int, int]] = [(0, 1), (1, 0), (0, -1), (-1, 0)]
 
-        return position[0] + (FACTORS[direction][0] * distance), position[1] + (
-            FACTORS[direction][1] * distance
-        )
+        return position[0] + (FACTORS[direction][0] * distance), position[1] + (FACTORS[direction][1] * distance)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -66,8 +57,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

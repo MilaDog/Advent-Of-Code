@@ -1,7 +1,7 @@
 import re
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -10,8 +10,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -42,8 +41,7 @@ class Solution:
         return res
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -63,8 +61,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
@@ -80,10 +77,7 @@ class Solution:
 
                 for aba in self.get_aba(hn):
                     target_aba: str = aba[1] + aba[0] + aba[1]
-                    if any(
-                        target_aba in section
-                        for section in set(sections) - set(hypernets)
-                    ):
+                    if any(target_aba in section for section in set(sections) - set(hypernets)):
                         found = True
                         break
 

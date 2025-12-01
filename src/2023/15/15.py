@@ -3,8 +3,7 @@ from functools import reduce
 from re import findall
 from timeit import timeit
 
-from common.python.timing import Timing
-
+from timing import Timing
 
 # class HolidayStringHelper:
 #     def __init__(self, data: str):
@@ -52,7 +51,7 @@ from common.python.timing import Timing
 
 #     for lens, oper in helper.steps:
 #         hashed_label: int = HolidayStringHelper.hash_value(lens.label)
-        
+
 #         if oper == "=":
 #             pass
 
@@ -69,31 +68,35 @@ from common.python.timing import Timing
 # if __name__ == "__main__":
 #     print(Timing(timeit(main, number=1)).microseconds, "microseconds")
 
+
 @dataclass(frozen=True)
 class Lens:
     label: str
     focal_length: int
     operator: str
 
+
 def parse_input() -> list[str]:
     """Parse the given input"""
     with open("input.txt", "r") as file:
         data: str = file.read().strip()
-        
+
     return [x.strip() for x in data.split(",")]
+
 
 def calculate_hash_of_step(step: str) -> int:
     """Calculate the HASH value for the given step"""
     return reduce(lambda res, c: ((res + ord(c)) * 17) % 256, step, 0)
+
 
 def generate_label_for_step(step: str):
     """Create the necessary label for the step"""
     found_values: list[str] = findall(r"^([a-z]+)([=-])(\d?)$", step)[0]
 
     if len(found_values[-1]) == 0:
-        focal:int = 0
+        focal: int = 0
     else:
-        focal:int = int(found_values[-1])
+        focal: int = int(found_values[-1])
 
     return Lens(label=found_values[0], focal_length=focal, operator=found_values[1])
 
@@ -101,10 +104,9 @@ def generate_label_for_step(step: str):
 def main() -> None:
     """Entry point to solving the problem"""
     data: list[str] = parse_input()
-    
+
     part_1_values: list[int] = [calculate_hash_of_step(step) for step in data]
     print(f"Part 1: {sum(part_1_values)}")
-
 
     part_2_values: list[Lens] = [generate_label_for_step(step) for step in data]
 

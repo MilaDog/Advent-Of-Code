@@ -2,7 +2,7 @@ import re
 from itertools import combinations
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -11,23 +11,19 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
                 Class instance with the parsed input data.
         """
         with open("input.txt", "r") as file:
-            values: list[list[int]] = [
-                list(map(int, re.findall(r"(\d+)", line))) for line in file.readlines()
-            ]
+            values: list[list[int]] = [list(map(int, re.findall(r"(\d+)", line))) for line in file.readlines()]
 
         return cls(data=values)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -36,8 +32,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

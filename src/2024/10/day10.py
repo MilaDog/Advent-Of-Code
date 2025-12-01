@@ -1,7 +1,7 @@
 from collections import defaultdict, deque
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -11,8 +11,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -33,8 +32,7 @@ class Solution:
         return cls(grid=values, zeroes=zeroes)
 
     def solve(self) -> None:
-        """
-        Solves both parts of the problem.
+        """Solves both parts of the problem.
 
         Returns:
             None

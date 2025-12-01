@@ -1,6 +1,6 @@
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -18,8 +18,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -30,11 +29,8 @@ class Solution:
 
         return cls(data=values)
 
-    def move(
-        self, position: tuple[int, int], direction: int, *, part_2: bool = False
-    ) -> tuple[int, int]:
-        """
-        Move to a new position.
+    def move(self, position: tuple[int, int], direction: int, *, part_2: bool = False) -> tuple[int, int]:
+        """Move to a new position.
 
         Args:
             position (tuple[int, int]):
@@ -48,7 +44,6 @@ class Solution:
             tuple[int, int]:
                 New position.
         """
-
         if not part_2:
             dx: int = position[0] + self.factors[direction][0]
             dy: int = position[1] + self.factors[direction][1]
@@ -74,8 +69,7 @@ class Solution:
         return dx, dy
 
     def get_value(self, position: tuple[int, int], *, part_2: bool = False) -> str:
-        """
-        Get the corresponding digit on the number pad for the given position.
+        """Get the corresponding digit on the number pad for the given position.
 
         Args:
             position (tuple[int, int]):
@@ -93,8 +87,7 @@ class Solution:
         return self.__values2[position[0]][position[1]]
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -112,8 +105,7 @@ class Solution:
         print(f"Part 01: {res}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None

@@ -2,7 +2,7 @@ from functools import reduce
 from itertools import pairwise
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 def get_histories() -> list[str]:
@@ -52,9 +52,7 @@ def get_part_2(reports) -> int:
     history_reports_next_sequence_value: list[int] = []
 
     for report in reports:
-        history_reports_next_sequence_value.append(
-            reduce(lambda a, b: b - a, [r[0] for r in reversed(report)])
-        )
+        history_reports_next_sequence_value.append(reduce(lambda a, b: b - a, [r[0] for r in reversed(report)]))
 
     return sum(history_reports_next_sequence_value)
 

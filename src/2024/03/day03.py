@@ -1,7 +1,7 @@
 import re
 from timeit import timeit
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

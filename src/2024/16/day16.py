@@ -3,7 +3,7 @@ import itertools
 from collections import defaultdict
 from timeit import timeit
 
-from src.common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:

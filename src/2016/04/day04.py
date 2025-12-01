@@ -3,7 +3,7 @@ from collections import Counter
 from timeit import timeit
 from typing import Counter as Counter_
 
-from common.python.timing import Timing
+from timing import Timing
 
 
 class Solution:
@@ -12,8 +12,7 @@ class Solution:
 
     @classmethod
     def parse_input(cls) -> "Solution":
-        """
-        Parse the problem data input to be used.
+        """Parse the problem data input to be used.
 
         Returns:
             Solution:
@@ -25,8 +24,7 @@ class Solution:
         return cls(data=values)
 
     def part_01(self) -> None:
-        """
-        Solve Part 01 of the problem.
+        """Solve Part 01 of the problem.
 
         Returns:
             None
@@ -34,17 +32,13 @@ class Solution:
         tlt: int = 0
 
         for room in self.data:
-            encryption, sector_id, checksum = re.findall(
-                r"([a-z-]+?)-(\d+)\[([a-z]{5})]", room
-            )[0]
+            encryption, sector_id, checksum = re.findall(r"([a-z-]+?)-(\d+)\[([a-z]{5})]", room)[0]
 
             c: Counter_[str] = Counter()
             for section in encryption.split("-"):
                 c.update(section)
 
-            res: str = "".join(
-                [ltr for ltr, _ in sorted(c.items(), key=lambda x: (-x[1], x[0]))[:5]]
-            )
+            res: str = "".join([ltr for ltr, _ in sorted(c.items(), key=lambda x: (-x[1], x[0]))[:5]])
 
             if res == checksum:
                 tlt += int(sector_id)
@@ -52,8 +46,7 @@ class Solution:
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """
-        Solve Part 02 of the problem.
+        """Solve Part 02 of the problem.
 
         Returns:
             None
@@ -61,9 +54,7 @@ class Solution:
         tlt: int = 0
 
         for room in self.data:
-            encryption, sector_id, checksum = re.findall(
-                r"([a-z-]+?)-(\d+)\[([a-z]{5})]", room
-            )[0]
+            encryption, sector_id, checksum = re.findall(r"([a-z-]+?)-(\d+)\[([a-z]{5})]", room)[0]
 
             key: int = int(sector_id) % 26
             decryption: str = ""
