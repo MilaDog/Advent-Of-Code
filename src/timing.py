@@ -6,7 +6,7 @@ from enum import Enum
 
 
 class TimingSymbols(Enum):
-    """TimingSymbols Symbols used for representing timing values"""
+    """TimingSymbols Symbols used for representing timing values."""
 
     SECONDS = "s"
     MILLISECONDS = "ms"
@@ -14,7 +14,7 @@ class TimingSymbols(Enum):
     NANOSECONDS = "ns"
 
     def __eq__(self, other):
-        """Comparing enumeration values"""
+        """Comparing enumeration values."""
         if isinstance(other, str):
             return self.value == other
 
@@ -25,6 +25,8 @@ class TimingSymbols(Enum):
 
 
 class Timing:
+    """Wrapper class for handling the execution time of a program."""
+
     def __init__(self, seconds: int | float = 0):
         # Converting seconds into desired outputs
         seconds_frac, s = _math.modf(seconds)
@@ -43,7 +45,7 @@ class Timing:
         self._nanoseconds = int(ns)
 
     def __str__(self):
-        """Get the string representation of the object"""
+        """Get the string representation of the object."""
         s: str = "seconds=%d; milliseconds=%02d; microseconds=%02d; nanoseconds= %02d" % (
             self._seconds,
             self._milliseconds,
@@ -52,45 +54,50 @@ class Timing:
         )
         return s
 
-    def result(self):
+    def result(self) -> str:
+        """Get the formatted timing result.
+
+        Returns:
+            str: Formatted resulting time.
+        """
         return "{:.5f}".format(self._seconds_raw) + "s"
 
     @property
     def seconds(self):
-        """Get seconds value"""
+        """Get seconds value."""
         return self._seconds
 
     @property
     def milliseconds(self):
-        """Get milliseconds value"""
+        """Get milliseconds value."""
         return self._milliseconds
 
     @property
     def microseconds(self):
-        """Get microseconds value"""
+        """Get microseconds value."""
         return self._microseconds
 
     @property
     def nanoseconds(self):
-        """Get nanoseconds value"""
+        """Get nanoseconds value."""
         return self._nanoseconds
 
     @property
     def seconds_raw(self):
-        """Get seconds raw value"""
+        """Get seconds raw value."""
         return self._seconds_raw
 
     @property
     def milliseconds_raw(self):
-        """Get milliseconds raw value"""
+        """Get milliseconds raw value."""
         return self._milliseconds_raw
 
     @property
     def microseconds_raw(self):
-        """Get microseconds raw value"""
+        """Get microseconds raw value."""
         return self._microseconds_raw
 
     @property
     def nanoseconds_raw(self):
-        """Get nanoseconds raw value"""
+        """Get nanoseconds raw value."""
         return self._nanoseconds_raw
