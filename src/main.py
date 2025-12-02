@@ -27,6 +27,7 @@ def get_day_input(day: int, year: int) -> str:
 
 
 def main() -> None:
+    """Entry point."""
     args = PARSER.parse_args()
 
     day: int = int(args.day) if args.day else dt.now().day
@@ -52,7 +53,7 @@ def main() -> None:
     try:
         # Loading the template
         template: str
-        with open("templates/template.py") as file:
+        with open(os.path.join(Path(__file__).resolve().parent, "templates/template.py")) as file:
             template = file.read()
 
         # Creating folder

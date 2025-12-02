@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 from timeit import timeit
 
-from timing import Timing
+from src.timing import Timing
 
 
 class Solution:

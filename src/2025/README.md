@@ -8,3 +8,4 @@
 | Calendar                                      | Name            | Language(s) used | Stars         |
 |-----------------------------------------------|-----------------|------------------|---------------|
 | [Day 01](https://adventofcode.com/2025/day/1) | Secret Entrance | Python           | :star: :star: |
+| [Day 01](https://adventofcode.com/2025/day/2) | Gift Shop       | Python           | :star: :star: |
