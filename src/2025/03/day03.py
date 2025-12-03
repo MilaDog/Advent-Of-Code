@@ -55,7 +55,7 @@ class Solution:
 
         print(f"Part 01 [OLD]: {tlt}")
 
-    def get_largest_k_digits(self, values: list[str], k: int) -> str:
+    def get_largest_k_digits_greedy(self, values: list[str], k: int) -> str:
         """Greedy algorithm that considers the largest following digit to consider. Takes that digit, ignoring the
         rest, constructing a final number being that of the largest possible number of given length `k`.
 
@@ -83,35 +83,63 @@ class Solution:
 
         return "".join(res)
 
-    def part_01(self) -> None:
-        """Solve Part 01 of the problem.
+    def get_largest_k_digits(self, values: list[str], k: int) -> str:
+        """Use of a Monotonic Stack to get the largest possible number of length `k` from the given values. Check is
+        that the numbers remain primarily in a decreasing order.
+
+        Args:
+            values (list[str]): Digits in number to consider.
+            k (int): Number of digits to consider.
 
         Returns:
-            None
+            str: Largest found number.
         """
-        tlt: int = 0
+        lngth: int = len(values)
+        to_remove: int = lngth - k
+        stack: list[str] = []
+
+        for value in values:
+            while stack and to_remove > 0 and stack[-1] < value:
+                stack.pop()
+                to_remove -= 1
+
+            stack.append(value)
+
+        return "".join(stack[:k])
+
+    def solve_greedily(self) -> None:
+        """Solve the problem using the Greedy algorithm."""
+        tlt1: int = 0
+        tlt2: int = 0
 
         for line in self.data:
-            tlt += int(self.get_largest_k_digits(values=line, k=2))
-        print(f"Part 01: {tlt}")
+            tlt1 += int(self.get_largest_k_digits_greedy(values=line, k=2))
+            tlt2 += int(self.get_largest_k_digits_greedy(values=line, k=12))
 
-    def part_02(self) -> None:
-        """Solve Part 02 of the problem.
+        print(f"Part 01: {tlt1}")
+        print(f"Part 02: {tlt2}")
 
-        Returns:
-            None
-        """
-        tlt: int = 0
+    def solve_monotonic_stack(self) -> None:
+        """Solve the problem using a Monotonic stack."""
+        tlt1: int = 0
+        tlt2: int = 0
 
         for line in self.data:
-            tlt += int(self.get_largest_k_digits(values=line, k=12))
+            tlt1 += int(self.get_largest_k_digits(values=line, k=2))
+            tlt2 += int(self.get_largest_k_digits(values=line, k=12))
 
-        print(f"Part 02: {tlt}")
+        print(f"Part 01: {tlt1}")
+        print(f"Part 02: {tlt2}")
 
 
 if __name__ == "__main__":
     sol: Solution = Solution.parse_input()
 
+    # Original
     print(Timing(timeit(sol.part_01_old, number=1)).result(), "\n")
-    print(Timing(timeit(sol.part_01, number=1)).result(), "\n")
-    print(Timing(timeit(sol.part_02, number=1)).result(), "\n")
+
+    # Greedy version
+    print(Timing(timeit(sol.solve_greedily, number=1)).result(), "\n")
+
+    # Monotonic Stack
+    print(Timing(timeit(sol.solve_monotonic_stack, number=1)).result(), "\n")
