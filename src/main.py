@@ -57,8 +57,8 @@ def main() -> None:
             template = file.read()
 
         # Creating folder
-        path: str = f"./{year}/{str(day).zfill(2)}"
-        P: Path = Path(path)
+        path: str = f"{year}/{str(day).zfill(2)}"
+        P: Path = Path(os.path.join(Path(__file__).resolve().parent, path))
 
         if not P.exists():
             P.mkdir(parents=True)
