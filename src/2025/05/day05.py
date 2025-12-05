@@ -43,6 +43,7 @@ class Solution:
             for start, end in self.id_ranges:
                 if start <= id_ <= end:
                     fresh = True
+                    break
 
             if fresh:
                 tlt += 1
