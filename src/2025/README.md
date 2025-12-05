@@ -11,3 +11,4 @@
 | [Day 02](https://adventofcode.com/2025/day/2) | Gift Shop           | Python           | :star: :star: |
 | [Day 03](https://adventofcode.com/2025/day/3) | Lobby               | Python           | :star: :star: |
 | [Day 04](https://adventofcode.com/2025/day/4) | Printing Department | Python           | :star: :star: |
+| [Day 05](https://adventofcode.com/2025/day/5) | Cafeteria           | Python           | :star: :star: |

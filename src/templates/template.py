@@ -1,4 +1,3 @@
-import os
 from pathlib import Path
 from timeit import timeit
 
@@ -19,26 +18,18 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-        with open(os.path.join(Path(__file__).resolve().parent, "input.txt"), "r") as file:
+        with open(Path(__file__).resolve().parent / "input.txt", "r") as file:
             values: list[str] = list(file.read().strip())
 
         return cls(data=values)
 
     def part_01(self) -> None:
-        """Solve Part 01 of the problem.
-
-        Returns:
-            None
-        """
+        """Solve Part 01 of the problem."""
         tlt: int = 0
         print(f"Part 01: {tlt}")
 
     def part_02(self) -> None:
-        """Solve Part 02 of the problem.
-
-        Returns:
-            None
-        """
+        """Solve Part 02 of the problem."""
         tlt: int = 0
 
         print(f"Part 02: {tlt}")
