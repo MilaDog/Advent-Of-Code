@@ -1,4 +1,3 @@
-from pathlib import Path
 from timeit import timeit
 
 from src.timing import Timing
@@ -18,7 +17,7 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-        with open(Path(__file__).resolve().parent / "input.txt", "r") as file:
+        with open("./inputs/%%YEAR%%/%%DAY%%/input.txt", "r") as file:
             values: list[str] = list(file.read().strip())
 
         return cls(data=values)

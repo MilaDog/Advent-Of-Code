@@ -1,4 +1,3 @@
-from pathlib import Path
 from timeit import timeit
 
 from src.timing import Timing
@@ -22,7 +21,7 @@ class Solution:
         id_ranges: list[tuple[int, int]] = []
         ids: list[int] = []
 
-        with open(Path(__file__).resolve().parent / "input.txt", "r") as file:
+        with open("./inputs/2025/05/input.txt", "r") as file:
             p1, p2 = file.read().strip().split("\n\n")
 
             for r in p1.strip().splitlines():

@@ -1,5 +1,4 @@
 from collections import deque
-from pathlib import Path
 from timeit import timeit
 from typing import Deque
 
@@ -30,7 +29,7 @@ class Solution:
         start: complex = 0
         size: tuple[int, int]
 
-        with open(Path(__file__).resolve().parent / "input.txt", "r") as file:
+        with open("./inputs/2025/07/input.txt", "r") as file:
             lines: list[str] = file.readlines()
             size = (len(lines), len(lines[0]))
 

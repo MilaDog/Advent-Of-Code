@@ -1,6 +1,4 @@
-import os
 from copy import deepcopy
-from pathlib import Path
 from timeit import timeit
 
 from src.timing import Timing
@@ -23,7 +21,7 @@ class Solution:
         """
         values: set[complex] = set()
 
-        with open(os.path.join(Path(__file__).resolve().parent, "input.txt"), "r") as file:
+        with open("./inputs/2025/04/input.txt", "r") as file:
             for r, line in enumerate(file.readlines()):
                 for c, paper in enumerate(line.strip()):
                     if paper == "@":

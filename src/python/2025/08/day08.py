@@ -1,6 +1,5 @@
 import math
 from itertools import combinations
-from pathlib import Path
 from timeit import timeit
 
 from src.timing import Timing
@@ -22,7 +21,7 @@ class Solution:
             Solution:
                 Class instance with the parsed input data.
         """
-        with open(Path(__file__).resolve().parent / "input.txt", "r") as file:
+        with open("./inputs/2025/08/input.txt", "r") as file:
             values: list[JunctionBox] = [tuple(map(int, line.strip().split(","))) for line in file.readlines()]
 
         return cls(data=values)
