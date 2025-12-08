@@ -14,7 +14,7 @@
 | [Day 05](https://adventofcode.com/2025/day/5)  | Cafeteria           | Python           | :star: :star: |
 | [Day 06](https://adventofcode.com/2025/day/6)  | Trash Compactor     | Python           | :star: :star: |
 | [Day 07](https://adventofcode.com/2025/day/7)  | Laboratories        | Python           | :star: :star: |
-| [Day 08](https://adventofcode.com/2025/day/8)  | -                   | Python           | -             |
+| [Day 08](https://adventofcode.com/2025/day/8)  | Playground          | Python           | :star: :star: |
 | [Day 09](https://adventofcode.com/2025/day/9)  | -                   | Python           | -             |
 | [Day 10](https://adventofcode.com/2025/day/10) | -                   | Python           | -             |
 | [Day 11](https://adventofcode.com/2025/day/11) | -                   | Python           | -             |
