@@ -2,7 +2,7 @@ import argparse
 import datetime
 import subprocess
 from pathlib import Path
-from typing import Any
+from typing import Iterator
 
 PARSER = argparse.ArgumentParser()
 
@@ -30,14 +30,17 @@ def main() -> None:
 
     for day in range(25):
         target_directory: Path = directory / f"{str(day + 1).zfill(2)}"
-        target_file: Any = target_directory.glob("*.py")
+        target_file: Iterator[Path] = target_directory.glob("*.py")
 
         for file in target_file:
-            res = subprocess.run(["py", str(file)], capture_output=True, text=True)
+            title: str = f"Day {str(day + 1).zfill(2)} - {file.name}"
+            len_title: int = len(f"Day {str(day + 1).zfill(2)} - {file.name}")
 
-            print("=" * 6)
-            print(f"Day {str(day + 1).zfill(2)}")
-            print("=" * 6)
+            print("=" * len_title)
+            print(title)
+            print("=" * len_title)
+
+            res = subprocess.run(["py", str(file)], capture_output=True, text=True)
             print(res.stdout)
 
             if res.stderr:
