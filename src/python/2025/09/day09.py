@@ -62,8 +62,9 @@ class Solution:
 
         return Polygon([(x1, y1), (x2, y1), (x2, y2), (x1, y2)])
 
-    def solve(self) -> None:
+    def solve_shapely(self) -> None:
         """Solve Part 01 and 02 of the problem."""
+        print("Shapely Approach")
         combos: list[Any] = list(itr.combinations(self.data, 2))
 
         tlt: float = max(self.calculate_area(point1=point1, point2=point2) for point1, point2 in combos)
@@ -77,8 +78,36 @@ class Solution:
         )
         print(f"Part 02: {tlt}")
 
+    def solve(self) -> None:
+        """Solve Part 01 and 02 of the problem with a vanilla approach."""
+        tlt1 = tlt2 = 0
+
+        for (x, y), (u, v) in itr.combinations(self.data, 2):
+            x, u = sorted((x, u))
+            y, v = sorted((y, v))
+
+            area: float = self.calculate_area(point1=(x, y), point2=(u, v))
+            tlt1 = max(tlt1, area)
+
+            for (p, q), (r, s) in itr.pairwise(self.data + [self.data[0]]):
+                p, r = sorted((p, r))
+                q, s = sorted((q, s))
+                if all((x < r, u > p, y < s, v > q)):
+                    break
+
+            else:
+                tlt2 = max(tlt2, area)
+
+        print("Vanilla Approach")
+        print(f"Part 01: {tlt1}")
+        print(f"Part 02: {tlt2}")
+
 
 if __name__ == "__main__":
     sol: Solution = Solution.parse_input()
 
+    # Vanilla approach
     print(Timing(timeit(sol.solve, number=1)).result(), "\n")
+
+    # Using Shapely
+    print(Timing(timeit(sol.solve_shapely, number=1)).result(), "\n")
