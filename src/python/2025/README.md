@@ -16,6 +16,6 @@
 | [Day 07](https://adventofcode.com/2025/day/7)  | Laboratories        | Python           | :star: :star: |
 | [Day 08](https://adventofcode.com/2025/day/8)  | Playground          | Python           | :star: :star: |
 | [Day 09](https://adventofcode.com/2025/day/9)  | Movie Theater       | Python           | :star: :star: |
-| [Day 10](https://adventofcode.com/2025/day/10) | Factory             | Python           | :star:        |
+| [Day 10](https://adventofcode.com/2025/day/10) | Factory             | Python           | :star: :star: |
 | [Day 11](https://adventofcode.com/2025/day/11) | -                   | Python           | -             |
 | [Day 12](https://adventofcode.com/2025/day/12) | -                   | Python           | -             |

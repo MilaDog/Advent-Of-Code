@@ -1,6 +1,8 @@
 from collections import deque
 from timeit import timeit
 
+from scipy.optimize import milp
+
 from src.timing import Timing
 
 
@@ -22,6 +24,17 @@ class Machine:
 
     def __repr__(self) -> str:
         return str(self)
+
+    def _decode_button(self, button: int) -> list[int]:
+        """Take the given button integer value and get the valid indices the button contains.
+
+        Args:
+            button (int): Target button value to decode.
+
+        Returns:
+            list[int]: Valid indices for the button.
+        """
+        return [indx for indx, bit in enumerate(bin(button)[2:][::-1]) if bit == "1"]
 
     def perform_toggles(self) -> int:
         """Perform the toggling of the lights via button presses, returning the minimum number of buttons that need
@@ -48,13 +61,21 @@ class Machine:
 
         return -1
 
-    def perform_joltage_counting(self) -> int:
+    def perform_joltage_counting(self) -> float:
         """Perform the joltage counting for the machine, to reach the given machine target.
+
+        Copping out using scipy for this, but implementing a NP_hard problem from scratch is infeasible.
 
         Returns:
             int: Minimum number of button presses to achieve the target joltage.
         """
-        return -1
+        c: list[int] = [1] * len(self.buttons)
+        available_buttons: list[list[int]] = [
+            [i in self._decode_button(button=button) for button in self.buttons]
+            for i in range(len(self.target_joltage))
+        ]
+
+        return milp(c, constraints=[available_buttons, self.target_joltage, self.target_joltage], integrality=c).fun
 
 
 class Solution:
@@ -114,12 +135,12 @@ class Solution:
 
     def part_02(self) -> None:
         """Solve Part 02 of the problem."""
-        tlt: int = 0
+        tlt: float = 0
 
         for machine in self.machines:
             tlt += machine.perform_joltage_counting()
 
-        print(f"Part 02: {tlt}")
+        print(f"Part 02: {int(tlt)}")
 
 
 if __name__ == "__main__":
