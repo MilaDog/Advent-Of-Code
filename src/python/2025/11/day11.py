@@ -26,6 +26,7 @@ class Solution:
 
         return cls(data=values)
 
+    @cache
     def part_01(self, start: str) -> int:
         """Solve Part 01 of the problem."""
         if start == "out":
@@ -36,7 +37,7 @@ class Solution:
     def part_02(self, start: str, seen_dac: bool, seen_fft: bool) -> int:
         """Solve Part 02 of the problem."""
         if start == "out":
-            return int(all((seen_dac, seen_fft)))
+            return seen_dac and seen_fft
         return sum(
             self.part_02(start=value, seen_dac=(seen_dac or value == "dac"), seen_fft=(seen_fft or value == "fft"))
             for value in self.data[start]
