@@ -18,4 +18,4 @@
 | [Day 09](https://adventofcode.com/2025/day/9)  | Movie Theater       | Python           | :star: :star: |
 | [Day 10](https://adventofcode.com/2025/day/10) | Factory             | Python           | :star: :star: |
 | [Day 11](https://adventofcode.com/2025/day/11) | Reactor             | Python           | :star: :star: |
-| [Day 12](https://adventofcode.com/2025/day/12) | -                   | Python           | -             |
+| [Day 12](https://adventofcode.com/2025/day/12) | Christmas Tree Farm | Python           | :star: :star: |
